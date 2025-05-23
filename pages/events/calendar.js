@@ -1,29 +1,24 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
-import events from "@/data/events.json";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { parseEventDate } from "@/utils/filterevents"; // Ensure this is imported for date parsing
+import client from "@/lib/sanity";
 
-export default function CalendarPage() {
+export default function CalendarPage({ events }) {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  // Match events to the selected date
-  const eventsForDate = events.filter((event) => {
-    return parseEventDate(event.date).toDateString() === selectedDate.toDateString();
-  });
+  const eventsForDate = events.filter((event) =>
+    new Date(event.date).toDateString() === selectedDate.toDateString()
+  );
 
-  // Highlight days that have events
   const tileClassName = ({ date, view }) => {
-    const dateStr = date.toDateString();
-    const eventsOnThisDate = events.filter((event) =>
-      parseEventDate(event.date).toDateString() === dateStr
-    );
-    if (eventsOnThisDate.length > 0) {
-      return 'highlight-event'; // Custom class for days with events
+    if (view === 'month') {
+      const hasEvent = events.some(event =>
+        new Date(event.date).toDateString() === date.toDateString()
+      );
+      return hasEvent ? 'highlight-event' : null;
     }
-    return null;
   };
 
   return (
@@ -36,7 +31,7 @@ export default function CalendarPage() {
           onChange={setSelectedDate}
           value={selectedDate}
           className="mb-10 rounded shadow-md"
-          tileClassName={tileClassName} // Highlight days with events
+          tileClassName={tileClassName}
         />
 
         <h2 className="text-xl font-semibold mb-4">
@@ -46,14 +41,14 @@ export default function CalendarPage() {
         {eventsForDate.length > 0 ? (
           <ul className="space-y-4">
             {eventsForDate.map((event) => (
-              <li key={event.id} className="border p-4 rounded shadow-sm">
+              <li key={event._id} className="border p-4 rounded shadow-sm">
                 <h3 className="text-lg font-bold">{event.title}</h3>
                 <p className="text-sm">{event.description}</p>
                 <a
                   href={`/events/${event.slug}`}
                   className="text-green-700 hover:underline text-sm"
                 >
-                  View Details → 
+                  View Details →
                 </a>
               </li>
             ))}
@@ -65,4 +60,21 @@ export default function CalendarPage() {
       <Footer />
     </>
   );
+}
+
+export async function getStaticProps() {
+  const query = `*[_type == "event"]{
+    _id,
+    title,
+    "slug": slug.current,
+    date,
+    description
+  }`;
+
+  const events = await client.fetch(query);
+
+  return {
+    props: { events },
+    revalidate: 60
+  };
 }

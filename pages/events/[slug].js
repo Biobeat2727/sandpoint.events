@@ -1,26 +1,37 @@
-import { useRouter } from "next/router";
-import Link from "next/link";
-import events from "@/data/events.json";
-import venues from "@/data/venues.json";
+import client from "@/lib/sanity";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
-export default function EventDetailPage() {
-  const router = useRouter();
-  const { slug } = router.query;
+const query = `*[_type == "event" && slug.current == $slug][0]{
+  _id,
+  title,
+  "slug": slug.current,
+  date,
+  description,
+  "imageUrl": image.asset->url,
+  venue->{
+    name,
+    address,
+    "imageUrl": image.asset->url,
+    slug
+  }
+}`;
 
-  if (!slug) return <div>Loading...</div>;
+const relatedQuery = `*[_type == "event" && slug.current != $slug] | order(date desc)[0...3]{
+  _id,
+  title,
+  "slug": slug.current,
+  date
+}`;
 
-  const event = events.find((e) => e.slug === slug);
-  if (!event) return <div>Event not found.</div>;
-
-  const venue = venues.find((v) => v.slug === event.venueSlug);
+export default function EventDetailPage({ event, relatedEvents }) {
+  const venue = event.venue;
 
   return (
     <>
       <Navbar />
       <main className="bg-white text-gray-900 px-4 sm:px-6 py-12 max-w-6xl mx-auto">
-        {/* Hero Image */}
         {event.imageUrl && (
           <img
             src={event.imageUrl}
@@ -29,9 +40,7 @@ export default function EventDetailPage() {
           />
         )}
 
-        {/* Main Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Main Content */}
           <div className="md:col-span-2">
             <h1 className="text-4xl font-bold mb-2">{event.title}</h1>
             <p className="text-gray-500 text-sm mb-4">
@@ -43,22 +52,10 @@ export default function EventDetailPage() {
               })}
             </p>
 
-            {/* Tags Placeholder */}
-            <div className="mb-4">
-              <span className="text-xs bg-gray-200 text-gray-800 px-3 py-1 rounded-full mr-2">
-                Community
-              </span>
-              <span className="text-xs bg-gray-200 text-gray-800 px-3 py-1 rounded-full">
-                Local
-              </span>
-            </div>
-
             <div className="mb-6">
               <h2 className="text-xl font-semibold mb-2">Main Info</h2>
               <p className="text-gray-700">{event.description}</p>
-              <p className="mt-4 italic text-sm">
-                Presented by <span className="text-gray-600">Organizer Name</span>
-              </p>
+              <p className="mt-4 italic text-sm">Presented by <span className="text-gray-600">Organizer Name</span></p>
             </div>
 
             <div className="mb-6">
@@ -68,7 +65,6 @@ export default function EventDetailPage() {
             </div>
           </div>
 
-          {/* Sidebar */}
           <aside className="space-y-4">
             {venue?.imageUrl && (
               <img
@@ -90,31 +86,46 @@ export default function EventDetailPage() {
           </aside>
         </div>
 
-        {/* Related Events (placeholder) */}
         <section className="mt-16">
           <h2 className="text-2xl font-bold mb-6">Related Events</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {events
-              .filter((e) => e.slug !== event.slug)
-              .slice(0, 3)
-              .map((related) => (
-                <div key={related.id} className="bg-gray-100 p-4 rounded shadow-sm">
-                  <h3 className="font-semibold">{related.title}</h3>
-                  <p className="text-sm text-gray-500">
-                    {new Date(related.date).toLocaleDateString()}
-                  </p>
-                  <Link
-                    href={`/events/${related.slug}`}
-                    className="text-green-700 text-sm mt-2 inline-block hover:underline"
-                  >
-                    View Details →
-                  </Link>
-                </div>
-              ))}
+            {relatedEvents.map((related) => (
+              <div key={related._id} className="bg-gray-100 p-4 rounded shadow-sm">
+                <h3 className="font-semibold">{related.title}</h3>
+                <p className="text-sm text-gray-500">
+                  {new Date(related.date).toLocaleDateString()}
+                </p>
+                <Link
+                  href={`/events/${related.slug}`}
+                  className="text-green-700 text-sm mt-2 inline-block hover:underline"
+                >
+                  View Details →
+                </Link>
+              </div>
+            ))}
           </div>
         </section>
       </main>
       <Footer />
     </>
   );
+}
+
+export async function getStaticPaths() {
+  const slugs = await client.fetch(`*[_type == "event"]{ "slug": slug.current }`);
+
+  return {
+    paths: slugs.map(({ slug }) => ({ params: { slug } })),
+    fallback: false
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const event = await client.fetch(query, { slug: params.slug });
+  const relatedEvents = await client.fetch(relatedQuery, { slug: params.slug });
+
+  return {
+    props: { event, relatedEvents },
+    revalidate: 60
+  };
 }

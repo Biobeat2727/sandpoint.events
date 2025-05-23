@@ -1,20 +1,33 @@
 import EventCard from "../components/EventCard";
-import events from "../data/events.json";
+import client from "@/lib/sanity";
 import Navbar from "../components/Navbar";
 import Footer from "@/components/Footer";
 import HeroCarousel from "@/components/HeroCarousel";
-import { getUpcomingEvents } from "@/utils/filterevents";  // Import the helper function to filter events
+import { getUpcomingEvents } from "@/utils/filterevents";  // Import the helper function
 
-const Home = () => {
-  // Get the upcoming events
+const eventQuery = `*[_type == "event"]{
+  _id,
+  title,
+  "slug": slug.current,
+  date,
+  description,
+  "imageUrl": image.asset->url,
+  venue->{
+    name,
+    address,
+    "imageUrl": image.asset->url
+  }
+} | order(date asc)`
+
+// ✅ Accept events as a prop
+export default function Home({ events }) {
   const upcomingEvents = getUpcomingEvents(events);
 
   return (
     <>
       <Navbar />
       <main className="min-h-screen bg-white text-gray-800 px-6 py-12">
-        {/* Hero Carousel */}
-        <HeroCarousel />
+        <HeroCarousel events={events} />
 
         <h1 className="text-4xl font-bold mb-4">Sandpoint.Events</h1>
         <p className="mb-8 text-lg">
@@ -23,10 +36,9 @@ const Home = () => {
 
         <section>
           <h2 className="text-2xl font-semibold mb-4">Upcoming Events</h2>
-          {/* Grid of events */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {upcomingEvents.map((event) => (
-              <EventCard key={event.id} event={event} />
+            {upcomingEvents.map(event => (
+              <EventCard key={event._id} event={event} />
             ))}
           </div>
         </section>
@@ -34,6 +46,14 @@ const Home = () => {
       <Footer />
     </>
   );
-};
+}
 
-export default Home;
+// ✅ Static Props
+export async function getStaticProps() {
+  const events = await client.fetch(eventQuery);
+
+  return {
+    props: { events },
+    revalidate: 60
+  };
+}

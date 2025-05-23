@@ -16,7 +16,7 @@ const Navbar = () => {
         </Link>
 
         {/* Links on the Right */}
-        <div className="flex space-x-6 text-white text-lg ml-auto">
+        <div className="flex space-x-6 flex-wrap text-white text-lg ml-auto">
           <Link href="/">Home</Link>
           <Link href="/events">Events</Link>
           <Link href="/venues">Venues</Link>

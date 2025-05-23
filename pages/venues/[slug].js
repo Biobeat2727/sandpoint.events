@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import Navbar from "../../components/Navbar";
-import events from "../../data/events.json";
 import venues from "../../data/venues.json";
 import Footer from "@/components/Footer";
 
