@@ -42,6 +42,8 @@ export default function HeroCarousel({ events }) {
         interval={6000}
         transitionTime={800}
         emulateTouch
+        swipeScrollTolerance={30}
+        preventMovementUntilSwipeScrollTolerance={true}
         className="w-full h-full"
       >
         {upcomingEvents.map((event) => (
