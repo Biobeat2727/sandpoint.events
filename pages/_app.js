@@ -1,11 +1,13 @@
-import "@/styles/globals.css";
+import "@/styles/globals.css"; // Keep this one, assuming it's your intended path via alias
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "../styles/globals.css";
+// Removed: import "../styles/globals.css"; // This line is now removed
 
- function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
-    <div className="bg-white text-gray-900 min-h-screen">
-    <Component {...pageProps} />
+    // MODIFIED: Removed min-h-screen from this div.
+    // The height of the overall application will now be determined by its content.
+    <div className="bg-white text-gray-900">
+      <Component {...pageProps} />
     </div>
   );
 }

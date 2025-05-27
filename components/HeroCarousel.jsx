@@ -30,8 +30,10 @@ export default function HeroCarousel({ events }) {
     .filter(event => new Date(event.date) > now)
     .slice(0, 3);
 
+  console.log("Upcoming Events in Carousel:", upcomingEvents);
+
   return (
-    <div className="w-full mb-12">
+    <div className="relative w-full min-h-screen overflow-hidden">
       <Carousel
         autoPlay
         infiniteLoop
@@ -40,66 +42,62 @@ export default function HeroCarousel({ events }) {
         interval={6000}
         transitionTime={800}
         emulateTouch
-        className="w-full"
+        className="w-full h-full"
       >
         {upcomingEvents.map((event) => (
-          <div
-            key={event._id}
-            // MODIFIED: Changed h-[26rem] to min-h-[26rem] on mobile to allow vertical growth
-            // This ensures the slide can expand if content needs more space.
-            className="min-h-[26rem] md:h-[28rem] flex items-center justify-center relative overflow-hidden bg-transparent"
-          >
-            {/* Background Image with heavy blur */}
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `url(${event.imageUrl})`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-                filter: "blur(50px)",
-                zIndex: 1,
-              }}
-            />
-            {/* Semi-transparent Dark Overlay for better text readability */}
-            <div className="absolute inset-0 bg-black bg-opacity-50 z-20"></div>
+  <div
+    key={event._id}
+    className="w-full min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent"
+  >
+    {/* Background Image with heavy blur */}
+    <div
+      className="absolute inset-0"
+      style={{
+        backgroundImage: `url(${event.imageUrl})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        filter: "blur(50px)",
+        zIndex: 1,
+      }}
+    />
+    {/* Radial gradient vignette overlay */}
+    <div className="absolute inset-0 bg-gradient-radial from-black/60 via-transparent to-black/60 z-10 pointer-events-none" />
 
-            {/* Main Content Container (Image and Text) */}
-            <div
-              // MODIFIED: Adjusted horizontal padding for smaller screens
-              className="relative flex flex-col md:flex-row items-center justify-between w-full max-w-6xl px-4 sm:px-6 gap-6 z-30"
-            >
-              {/* Text Content */}
-              <div className="md:w-1/2 text-center md:text-left p-4 rounded-lg bg-black bg-opacity-30">
-                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 text-shadow-md">
-                  {event.title}
-                </h2>
-                <p className="text-sm text-gray-200 mb-2 text-shadow-sm">
-                  {formatDate(event.date)}
-                </p>
-                {/* Event Description with Line-clamp */}
-                <p className="text-gray-100 mb-4 line-clamp-4 text-shadow-sm">
-                  {event.description}
-                </p>
-                <Link
-                  href={`/events/${event.slug}`}
-                  className="inline-block bg-green-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-800 transition duration-300 shadow-md"
-                >
-                  View Event →
-                </Link>
-              </div>
-              {/* Event Image */}
-              <div className="md:w-1/2 flex justify-center z-10">
-                <img
-                  src={event.imageUrl}
-                  alt={event.title}
-                  // MODIFIED: Reduced max-height for very small screens
-                  className="rounded-lg shadow-xl max-h-60 sm:max-h-72 object-contain"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
+    {/* Semi-transparent dark overlay */}
+    <div className="absolute inset-0 bg-black/40 z-20" />
+
+    {/* Inner content */}
+    <div className="relative z-30 flex flex-col md:flex-row items-center justify-center h-full w-full max-w-6xl mx-auto px-4 gap-8">
+      
+      {/* Text Content */}
+      <div className="md:w-1/2 text-center md:text-left p-6 rounded-xl bg-black/30 backdrop-blur-md shadow-lg">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white drop-shadow-lg mb-1">
+          <span className="bg-gradient-to-r from-green-400 to-yellow-300 bg-clip-text text-transparent">
+            {event.title}
+          </span>
+        </h2>
+        <p className="text-lg font-medium text-green-300 mb-1">{formatDate(event.date)}</p>
+        <p className="text-gray-100 mb-4 line-clamp-4">{event.description}</p>
+        <Link
+          href={`/events/${event.slug}`}
+          className="inline-block bg-green-700 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-800 transition duration-300 shadow-md"
+        >
+          View Event →
+        </Link>
+      </div>
+
+      {/* Event Image */}
+      <div className="md:w-1/2 flex justify-center z-10">
+        <img
+          src={event.imageUrl}
+          alt={event.title}
+          className="rounded-xl shadow-2xl border border-white/20 hover:rotate-1 transition-transform duration-300 ease-in-out max-h-60 sm:max-h-72 object-contain"
+        />
+      </div>
+    </div>
+  </div>
+))}
       </Carousel>
     </div>
   );

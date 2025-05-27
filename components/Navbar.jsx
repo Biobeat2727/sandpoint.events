@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-green-600 p-4 h-24 w-full flex sticky top-0 z-50"> {/* Added sticky top-0 z-50 */}
+    <nav className="bg-gradient-to-b from-green-600 to-transparent p-4 h-24 w-full flex fixed top-0 z-50"> {/* Added sticky top-0 z-50 */}
       {/* Main flex container */}
       <div className="flex items-center justify-between w-full max-w-full mx-auto">
 
