@@ -68,7 +68,7 @@ export default function HeroCarousel({ events }) {
     <div className="absolute inset-0 bg-black/40 z-20" />
 
     {/* Inner content */}
-    <div className="relative z-30 flex flex-col md:flex-row items-center justify-center h-full w-full max-w-6xl mx-auto px-4 gap-8">
+    <div className="relative z-30 flex flex-col md:flex-row items-center justify-center h-full w-full max-w-6xl mx-auto px-4 gap-8 pt-24">
       
       {/* Text Content */}
       <div className="md:w-1/2 text-center md:text-left p-6 rounded-xl bg-black/30 backdrop-blur-md shadow-lg">
