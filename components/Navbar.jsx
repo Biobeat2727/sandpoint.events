@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="bg-gradient-to-b from-green-600 to-transparent p-4 h-24 w-full flex fixed top-0 z-50">
+      <nav className="bg-gradient-to-b from-green-500 to-transparent p-4 h-20 w-full flex fixed top-0 z-50">
         <div className="flex items-center justify-between w-full max-w-full mx-auto">
           <Link href="/" className="flex-shrink-0">
             <img
