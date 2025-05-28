@@ -18,7 +18,6 @@ html, body {
   padding: 0;
   touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
 }
 
 body {
