@@ -115,7 +115,7 @@ export default function HeroCarousel({ events }) {
                         <img
                           src={event.imageUrl}
                           alt={event.title}
-                          className="h-52 sm:h-64 md:h-auto md:max-h-[65vh] object-contain max-w-full"
+                          className="h-64 sm:h-64 md:h-auto md:max-h-[65vh] object-contain max-w-full"
 
                         />
                       </motion.div>
