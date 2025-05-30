@@ -37,6 +37,7 @@ export async function getStaticProps({ params }) {
       venue,
       venueEvents,
     },
+    revalidate: 60,
   };
 }
 
