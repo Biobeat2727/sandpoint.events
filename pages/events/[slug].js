@@ -18,12 +18,17 @@ const query = `*[_type == "event" && slug.current == $slug][0]{
   }
 }`;
 
-const relatedQuery = `*[_type == "event" && slug.current != $slug] | order(date desc)[0...3]{
+const relatedQuery = `*[
+  _type == "event" &&
+  slug.current != $slug &&
+  dateTime(date) >= dateTime(now())
+] | order(date asc)[0...3]{
   _id,
   title,
   "slug": slug.current,
   date
 }`;
+
 
 export default function EventDetailPage({ event, relatedEvents }) {
   const venue = event.venue;

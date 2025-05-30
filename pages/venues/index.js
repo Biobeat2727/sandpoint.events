@@ -1,9 +1,28 @@
 import Navbar from "../../components/Navbar";
 import VenueCard from "@/components/VenueCard";
-import venues from "../../data/venues.json";
 import Footer from "@/components/Footer";
+import client from "@/lib/sanity";
 
-export default function VenuesPage() {
+// GROQ query to fetch venues
+const query = `*[_type == "venue"] | order(name asc){
+  _id,
+  name,
+  address,
+  "slug": slug.current,
+  "imageUrl": image.asset->url
+}`;
+
+// Fetch venue data at build time
+export async function getStaticProps() {
+  const venues = await client.fetch(query);
+  return {
+    props: {
+      venues,
+    },
+  };
+}
+
+export default function VenuesPage({ venues }) {
   return (
     <>
       <Navbar />
@@ -16,9 +35,9 @@ export default function VenuesPage() {
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {venues.map((venue) => (
-            <VenueCard key={venue.id} venue={venue} />
-        ))}
-          </div>
+            <VenueCard key={venue._id} venue={venue} />
+          ))}
+        </div>
       </main>
       <Footer />
     </>
