@@ -1,17 +1,29 @@
 import { useState } from "react";
-import venues from "../data/venues.json";
+import client from "@/lib/sanity"; // ✅
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-export default function SubmitEvent() {
-    const [formData, setFormData] = useState({
-        title: "",
-        date: "",
-        venueSlug: venues[0]?.slug || "",
-        customVenue: "", // <-- New
-        imageUrl: "",
-        description: "",
-      });
+export async function getStaticProps() {
+  const venues = await client.fetch(`*[_type == "venue"] | order(name asc){
+    name,
+    "slug": slug.current
+  }`);
+  return { props: { venues } };
+}
+
+export default function SubmitEvent({ venues }) {
+  const [formData, setFormData] = useState({
+    title: "",
+    date: "",
+    venueSlug: venues[0]?.slug || "",
+    customVenue: "",
+    imageUrl: "",
+    description: "",
+  });
+
+  // ...rest of your component stays unchanged
+}
+
       
 
   const [submitted, setSubmitted] = useState(false);
