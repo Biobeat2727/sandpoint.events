@@ -32,6 +32,8 @@ const relatedQuery = `*[
 
 export default function EventDetailPage({ event, relatedEvents }) {
   const venue = event.venue;
+  console.log("VENUE OBJECT", venue);
+
 
   return (
     <>
@@ -65,8 +67,16 @@ export default function EventDetailPage({ event, relatedEvents }) {
 
             <div className="mb-6">
               <h2 className="text-xl font-semibold mb-2">Location</h2>
-              <p className="text-gray-800">{venue?.name}</p>
-              <p className="text-gray-600">{venue?.address}</p>
+              {venue?.slug?.current && (
+  <Link
+    href={`/venues/${venue.slug.current}`}
+    className="text-green-700 hover:underline font-medium"
+  >
+    {venue.name}
+  </Link>
+)}
+
+            <p className="text-gray-600">{venue?.address}</p>
             </div>
           </div>
 
