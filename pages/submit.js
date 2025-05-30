@@ -1,3 +1,17 @@
+import React, { useState } from "react";
+import client from "@/lib/sanity";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
+export async function getStaticProps() {
+  const venues = await client.fetch(`*[_type == "venue"] | order(name asc){
+    name,
+    "slug": slug.current
+  }`);
+  return { props: { venues } };
+}
+
+
 export default function SubmitEvent({ venues }) {
   const [formData, setFormData] = useState({
     title: "",
