@@ -74,6 +74,8 @@ export async function getStaticProps() {
     title,
     "slug": slug.current,
     date,
+    tags,
+    url,
     description
   }`;
 

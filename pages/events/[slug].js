@@ -2,6 +2,7 @@ import client from "@/lib/sanity";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { getGoogleCalendarUrl } from "@/lib/canlendarUtils";
 
 const query = `*[_type == "event" && slug.current == $slug][0]{
   _id,
@@ -9,6 +10,9 @@ const query = `*[_type == "event" && slug.current == $slug][0]{
   "slug": slug.current,
   date,
   description,
+  tags,
+  url,
+  tickets,
   "imageUrl": image.asset->url,
   venue->{
     name,
@@ -89,14 +93,46 @@ export default function EventDetailPage({ event, relatedEvents }) {
                 <p className="font-semibold text-lg">{venue?.name}</p>
               )}
               <p className="text-sm text-gray-600">{venue?.address}</p>
+              {event.url && (
+  <a
+    href={event.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-green-700 underline text-sm mt-2 inline-block"
+  >
+    Visit Event Website
+  </a>
+)}
+
             </div>
 
-            <button className="w-full bg-green-700 text-white py-2 rounded hover:bg-green-800">
+
+
+            <div className="space-y-3">
+              {event.date && ( 
+              <a
+              href={getGoogleCalendarUrl(event)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full text-center bg-green-700 text-white py-3 rounded-lg hover:bg-green-800 transition font-semibold"
+              >
               Add to Calendar
-            </button>
-            <button className="w-full border border-green-700 text-green-700 py-2 rounded hover:bg-green-50">
+              </a>
+              )}
+
+
+             {event.tickets && (
+              <a 
+              href={event.tickets}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w- full text-center border border-green-700 text-green-700 py-3 rounded-lg hover:bg-green-50 transition font-semibold"
+              >
               Get Tickets
-            </button>
+              </a>
+             )}
+             </div>
+
           </aside>
         </div>
 

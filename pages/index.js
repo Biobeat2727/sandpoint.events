@@ -13,6 +13,8 @@ const eventQuery = `*[_type == "event"]{
   "slug": slug.current,
   date,
   description,
+  tags, 
+  url,
   "imageUrl": image.asset->url,
   venue->{
     name,
@@ -27,10 +29,9 @@ export default function Home({ events }) {
   return (
     <>
       <Navbar /> {/* Your fixed Navbar */}
-
+      
       <HeroCarousel events={events} /> {/* This is now absolute and full screen */}
 
-      {/* The main content area now starts below the HeroCarousel */}
       <main className="bg-white text-gray-800 px-6 py-12 relative z-10">
         <h1 className="text-4xl font-bold mb-4">Sandpoint.Events</h1>
         <p className="mb-8 text-lg">
