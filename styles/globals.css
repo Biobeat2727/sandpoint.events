@@ -58,3 +58,13 @@ img {
     color: var(--foreground);
   }
 }
+
+.highlight-event {
+  background-color: #34d399; /* Tailwind emerald-400 */
+  border-radius: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: 0 auto;
+  margin-top: 2px;
+}
+

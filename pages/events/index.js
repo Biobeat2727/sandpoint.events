@@ -25,19 +25,28 @@ export default function AllEventsPage({ events }) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white text-gray-800 px-6 py-12 max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6">All Events</h1>
+      <main className="min-h-screen bg-white text-gray-800 px-6 pt-28 pb-12 max-w-5xl mx-auto">
 
-        <Link href="/events/calendar" className="hover:underline">
-          Calendar View
-        </Link>
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
+    <h1 className="text-4xl font-bold">All Events</h1>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {sortedEvents.map((event) => (
-            <EventCard key={event._id} event={event} />
-          ))}
-        </div>
-      </main>
+    <Link
+      href="/events/calendar"
+      className="mt-4 sm:mt-0 inline-flex items-center justify-center bg-green-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-green-800 transition w-full sm:w-auto text-center"
+
+
+    >
+      📅 View Calendar
+    </Link>
+  </div>
+
+  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    {sortedEvents.map((event) => (
+      <EventCard key={event._id} event={event} />
+    ))}
+  </div>
+</main>
+
       <Footer />
     </>
   );

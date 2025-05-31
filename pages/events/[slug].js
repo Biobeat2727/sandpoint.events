@@ -32,13 +32,12 @@ const relatedQuery = `*[
 
 export default function EventDetailPage({ event, relatedEvents }) {
   const venue = event.venue;
-  console.log("VENUE OBJECT", venue);
-
 
   return (
     <>
       <Navbar />
       <main className="bg-white text-gray-900 px-4 sm:px-6 py-12 max-w-6xl mx-auto">
+        {/* Event hero image */}
         {event.imageUrl && (
           <img
             src={event.imageUrl}
@@ -48,6 +47,7 @@ export default function EventDetailPage({ event, relatedEvents }) {
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Main content */}
           <div className="md:col-span-2">
             <h1 className="text-4xl font-bold mb-2">{event.title}</h1>
             <p className="text-gray-500 text-sm mb-4">
@@ -62,24 +62,13 @@ export default function EventDetailPage({ event, relatedEvents }) {
             <div className="mb-6">
               <h2 className="text-xl font-semibold mb-2">Main Info</h2>
               <p className="text-gray-700">{event.description}</p>
-              <p className="mt-4 italic text-sm">Presented by <span className="text-gray-600">Organizer Name</span></p>
-            </div>
-
-            <div className="mb-6">
-              <h2 className="text-xl font-semibold mb-2">Location</h2>
-              {venue?.slug?.current && (
-  <Link
-    href={`/venues/${venue.slug.current}`}
-    className="text-green-700 hover:underline font-medium"
-  >
-    {venue.name}
-  </Link>
-)}
-
-            <p className="text-gray-600">{venue?.address}</p>
+              <p className="mt-4 italic text-sm">
+                Presented by <span className="text-gray-600">Organizer Name</span>
+              </p>
             </div>
           </div>
 
+          {/* Sidebar */}
           <aside className="space-y-4">
             {venue?.imageUrl && (
               <img
@@ -89,9 +78,19 @@ export default function EventDetailPage({ event, relatedEvents }) {
               />
             )}
             <div>
-              <p className="font-semibold text-lg">{venue?.name}</p>
+              {venue?.slug?.current ? (
+                <Link
+                  href={`/venues/${venue.slug.current}`}
+                  className="font-semibold text-lg text-green-700 hover:underline block"
+                >
+                  {venue.name}
+                </Link>
+              ) : (
+                <p className="font-semibold text-lg">{venue?.name}</p>
+              )}
               <p className="text-sm text-gray-600">{venue?.address}</p>
             </div>
+
             <button className="w-full bg-green-700 text-white py-2 rounded hover:bg-green-800">
               Add to Calendar
             </button>
@@ -101,6 +100,7 @@ export default function EventDetailPage({ event, relatedEvents }) {
           </aside>
         </div>
 
+        {/* Related Events */}
         <section className="mt-16">
           <h2 className="text-2xl font-bold mb-6">Related Events</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -125,6 +125,7 @@ export default function EventDetailPage({ event, relatedEvents }) {
     </>
   );
 }
+
 
 export async function getStaticPaths() {
   const slugs = await client.fetch(`*[_type == "event"]{ "slug": slug.current }`);
