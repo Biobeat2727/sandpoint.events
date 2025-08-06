@@ -2,6 +2,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,11 +22,11 @@ const Navbar = () => {
             />
           </Link>
 
-          <div className="hidden md:flex space-x-6 flex-wrap text-white text-lg ml-auto">
-            <Link href="/">Home</Link>
-            <Link href="/events">Events</Link>
-            <Link href="/venues">Venues</Link>
-            <Link href="/submit">Submit</Link>
+          <div className="flex space-x-8 text-white text-xl font-semibold max-md:hidden">        
+            <Link href="/" className="hover:text-green-200 hover:scale-110 transition-all duration-300 px-2 py-1 rounded hover:bg-white/10 hover:shadow-lg">Home</Link>
+            <Link href="/events" className="hover:text-green-200 hover:scale-110 transition-all duration-300 px-2 py-1 rounded hover:bg-white/10 hover:shadow-lg">Events</Link>
+            <Link href="/venues" className="hover:text-green-200 hover:scale-110 transition-all duration-300 px-2 py-1 rounded hover:bg-white/10 hover:shadow-lg">Venues</Link>
+            <Link href="/submit" className="hover:text-green-200 hover:scale-110 transition-all duration-300 px-2 py-1 rounded hover:bg-white/10 hover:shadow-lg">Submit</Link>
           </div>
 
           {!isMenuOpen && (

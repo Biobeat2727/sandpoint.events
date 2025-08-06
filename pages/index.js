@@ -1,8 +1,8 @@
 // pages/index.js
 
-import EventCard from "../components/EventCard";
+import EventCard from "@/components/EventCard";
 import client from "@/lib/sanity";
-import Navbar from "../components/Navbar";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroCarousel from "@/components/HeroCarousel";
 import { getUpcomingEvents } from "@/utils/filterevents";

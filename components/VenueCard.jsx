@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function VenueCard({ venue }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-lg shadow-md p-4 max-w-md">
+    <div className="card-base card-hover p-4 max-w-md">
       {venue.imageUrl && (
         <div className="relative w-full h-48 overflow-hidden">
           {/* Image container with no overflow */}
@@ -17,7 +17,7 @@ export default function VenueCard({ venue }) {
       <p className="text-sm text-gray-600 mb-2">{venue.address}</p>
       <Link
         href={`/venues/${venue.slug}`}
-        className="inline-block text-green-700 font-semibold hover:underline"
+        className="btn-link"
       >
         View Venue →
       </Link>

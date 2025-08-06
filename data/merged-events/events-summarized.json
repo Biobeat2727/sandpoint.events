@@ -1,0 +1,294 @@
+[
+  {
+    "id": "auto-002",
+    "title": "Summer Theater Camp The Three Musketeers",
+    "slug": "summer-theater-camp-three-musketeers",
+    "date": "2025-08-08T18:00:00.000Z",
+    "description": "Student performance featuring talented actors ages 8-17 presenting their take on the classic adventure tale at the historic Panida Theater. Located in Sandpoint, Idaho.",
+    "venue": {
+      "name": "Panida Theater",
+      "address": "300 N 1st Ave, Sandpoint, ID 83864"
+    },
+    "tags": [
+      "theater",
+      "youth",
+      "performance",
+      "family"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/default-event.jpg",
+    "shortSummary": "Live Music at Panida Theater",
+    "keywords": [
+      "performance",
+      "sandpoint",
+      "idaho",
+      "theater",
+      "historic"
+    ]
+  },
+  {
+    "id": "auto-001",
+    "title": "Movies on the Mountain",
+    "slug": "movies-on-the-mountain-aug-08",
+    "date": "2025-08-08T19:30:00.000Z",
+    "description": "Free outdoor movie screenings at Schweitzer Mountain Resort with special activities each week. Bring lawn chairs and blankets for a magical movie experience under the stars. Located in Sandpoint, Idaho.",
+    "venue": {
+      "name": "Schweitzer Mountain Resort",
+      "address": "10000 Schweitzer Mountain Rd, Sandpoint, ID 83864"
+    },
+    "tags": [
+      "movies",
+      "outdoor",
+      "family",
+      "free"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/default-event.jpg",
+    "shortSummary": "Outdoor Activity",
+    "keywords": [
+      "outdoor",
+      "sandpoint",
+      "idaho"
+    ]
+  },
+  {
+    "id": "auto-003",
+    "title": "Sandpoint on Stage Criminals",
+    "slug": "sandpoint-on-stage-criminals",
+    "date": "2025-08-08T19:30:00.000Z",
+    "description": "Theatrical performance about criminal suspects recommended for ages 15. A gripping drama presented by local theater talents at Panida Little Theater. Located in Sandpoint, Idaho.",
+    "venue": {
+      "name": "Panida Theater",
+      "address": "300 N 1st Ave, Sandpoint, ID 83864"
+    },
+    "tags": [
+      "theater",
+      "drama",
+      "adult"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/default-event.jpg",
+    "shortSummary": "Community Event at Panida Theater",
+    "keywords": [
+      "performance",
+      "local",
+      "sandpoint",
+      "idaho",
+      "theater",
+      "historic"
+    ]
+  },
+  {
+    "id": "auto-004",
+    "title": "POAC Annual Arts and Crafts Fair",
+    "slug": "poac-annual-arts-and-crafts-fair",
+    "date": "2025-08-09T09:00:00.000Z",
+    "description": "Downtown Sandpoint transforms into an artistic showcase featuring local artist booths, food vendors, and a dedicated youth art area.",
+    "venue": {
+      "name": "Downtown Sandpoint",
+      "address": "Downtown Sandpoint, ID 83864"
+    },
+    "tags": [
+      "arts",
+      "crafts",
+      "fair",
+      "family",
+      "community"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/art-event.jpg",
+    "shortSummary": "Community Event",
+    "keywords": [
+      "artist",
+      "local",
+      "annual",
+      "food",
+      "sandpoint",
+      "downtown"
+    ]
+  },
+  {
+    "id": "auto-005",
+    "title": "Christmas in August Poker Run",
+    "slug": "christmas-in-august-poker-run",
+    "date": "2025-08-09T09:00:00.000Z",
+    "description": "Annual charity motorcycle ride for Toys for Tots hosted by Sandpoint Lions Club. 25 per rider includes route and BBQ dinner.",
+    "venue": {
+      "name": "Sandpoint Lions Club",
+      "address": "Sandpoint, ID 83864"
+    },
+    "tags": [
+      "charity",
+      "motorcycle",
+      "community",
+      "bbq"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/community-event.jpg",
+    "shortSummary": "Fundraiser",
+    "keywords": [
+      "annual",
+      "charity",
+      "sandpoint"
+    ]
+  },
+  {
+    "id": "auto-006",
+    "title": "Movies on the Mountain",
+    "slug": "movies-on-the-mountain-aug-15",
+    "date": "2025-08-15T19:30:00.000Z",
+    "description": "Second week of free outdoor movie screenings at Schweitzer Mountain Resort. Special activities precede the movie at dusk. Located in Sandpoint, Idaho.",
+    "venue": {
+      "name": "Schweitzer Mountain Resort",
+      "address": "10000 Schweitzer Mountain Rd, Sandpoint, ID 83864"
+    },
+    "tags": [
+      "movies",
+      "outdoor",
+      "family",
+      "free"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/default-event.jpg",
+    "shortSummary": "Outdoor Activity",
+    "keywords": [
+      "outdoor",
+      "sandpoint",
+      "idaho"
+    ]
+  },
+  {
+    "id": "auto-007",
+    "title": "Movies on the Mountain",
+    "slug": "movies-on-the-mountain-aug-22",
+    "date": "2025-08-22T19:30:00.000Z",
+    "description": "Final week of the summer outdoor movie series at Schweitzer Mountain Resort with special activities and movie under the stars. Located in Sandpoint, Idaho.",
+    "venue": {
+      "name": "Schweitzer Mountain Resort",
+      "address": "10000 Schweitzer Mountain Rd, Sandpoint, ID 83864"
+    },
+    "tags": [
+      "movies",
+      "outdoor",
+      "family",
+      "free"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/default-event.jpg",
+    "shortSummary": "Outdoor Activity",
+    "keywords": [
+      "outdoor",
+      "sandpoint",
+      "idaho"
+    ]
+  },
+  {
+    "id": "auto-008",
+    "title": "Fall Fest",
+    "slug": "fall-fest-schweitzer",
+    "date": "2025-08-29T12:00:00.000Z",
+    "description": "Multi-day celebration at Schweitzer featuring beer tasting and live music. Beer tent located near Great Escape Quad. Located in Sandpoint, Idaho.",
+    "venue": {
+      "name": "Schweitzer Mountain Resort",
+      "address": "10000 Schweitzer Mountain Rd, Sandpoint, ID 83864"
+    },
+    "tags": [
+      "festival",
+      "beer",
+      "music",
+      "adult"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/music-event.jpg",
+    "shortSummary": "Festival",
+    "keywords": [
+      "live music",
+      "celebration",
+      "sandpoint",
+      "idaho"
+    ]
+  },
+  {
+    "id": "auto-009",
+    "title": "Artists Studio Tour",
+    "slug": "artists-studio-tour",
+    "date": "2025-08-30T10:00:00.000Z",
+    "description": "Free self-guided tour of local artists studios featuring various art mediums throughout the Sandpoint area.",
+    "venue": {
+      "name": "Various Studios",
+      "address": "Sandpoint Area, ID 83864"
+    },
+    "tags": [
+      "art",
+      "tour",
+      "free",
+      "self-guided"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/art-event.jpg",
+    "shortSummary": "Art Event",
+    "keywords": [
+      "artist",
+      "local",
+      "sandpoint"
+    ]
+  },
+  {
+    "id": "auto-010",
+    "title": "Bluesfest",
+    "slug": "bluesfest-priest-river",
+    "date": "2025-09-04T18:00:00.000Z",
+    "description": "Four-day blues music festival in nearby Priest River featuring local Northwest Blues bands. 35 entry, children 12 and under free. Located in Sandpoint, Idaho.",
+    "venue": {
+      "name": "Priest River Venue",
+      "address": "1542 Prater Mountain Rd, Priest River, ID"
+    },
+    "tags": [
+      "blues",
+      "music",
+      "festival",
+      "multi-day"
+    ],
+    "url": null,
+    "imageUrl": null,
+    "source": "sandpoint-online",
+    "scrapedAt": "2025-08-06T17:30:00.000Z",
+    "image": "/images/fallbacks/music-event.jpg",
+    "shortSummary": "Festival",
+    "keywords": [
+      "band",
+      "local",
+      "festival",
+      "children",
+      "sandpoint",
+      "idaho"
+    ]
+  }
+]

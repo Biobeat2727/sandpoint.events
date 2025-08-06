@@ -44,7 +44,7 @@ export default function EventCard({ event }) {
   <div className="mt-3">
     <Link
       href={`/events/${event.slug}`}
-      className="inline-block bg-green-700 text-white font-semibold py-1 px-3 rounded hover:bg-green-800 transition duration-300 text-sm"
+      className="btn-primary text-sm"
     >
       View Event →
     </Link>

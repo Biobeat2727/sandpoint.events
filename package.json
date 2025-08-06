@@ -6,24 +6,44 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "events:run": "node scripts/cli.js run",
+    "events:test": "node scripts/cli.js run --test",
+    "events:scrape": "node scripts/cli.js scrape",
+    "events:merge": "node scripts/cli.js merge",
+    "events:enhance": "node scripts/cli.js enhance-images",
+    "events:summarize": "node scripts/cli.js summarize",
+    "events:upload": "node scripts/cli.js upload --preview",
+    "events:upload:live": "node scripts/cli.js upload",
+    "events:status": "node scripts/cli.js status",
+    "events:clean": "node scripts/cli.js clean",
+    "events:help": "node scripts/cli.js --help",
+    "events:test-pipeline": "node scripts/testPipeline.js"
   },
   "dependencies": {
     "@sanity/client": "^7.3.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "axios": "^1.11.0",
+    "cheerio": "^1.1.2",
+    "commander": "^14.0.0",
+    "crypto": "^1.0.1",
+    "date-fns": "^4.1.0",
     "framer-motion": "^12.15.0",
+    "fs-extra": "^11.3.1",
     "next": "14.2.3",
+    "puppeteer": "^24.16.0",
     "react": "18.3.1",
     "react-calendar": "^5.1.0",
     "react-dom": "18.3.1",
-    "react-responsive-carousel": "^3.2.23"
+    "react-responsive-carousel": "^3.2.23",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/line-clamp": "^0.4.4",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.21",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.4"
+    "postcss": "^8.5.4",
+    "tailwindcss": "^3.4.17"
   }
 }

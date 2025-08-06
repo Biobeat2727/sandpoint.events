@@ -1,0 +1,48 @@
+{
+  "timestamp": "2025-08-06T17:38:40.936Z",
+  "original_count": 15,
+  "merged_count": 10,
+  "duplicates_removed": 5,
+  "sources": {
+    "sandpoint-online": 10,
+    "festival-at-sandpoint": 5
+  },
+  "date_range": {
+    "earliest": "2025-08-08T18:00:00.000Z",
+    "latest": "2025-09-04T18:00:00.000Z"
+  },
+  "venues": {
+    "Panida Theater": 2,
+    "Schweitzer Mountain Resort": 4,
+    "Downtown Sandpoint": 1,
+    "Sandpoint Lions Club": 1,
+    "Various Studios": 1,
+    "Priest River Venue": 1
+  },
+  "tags": {
+    "theater": 2,
+    "youth": 1,
+    "performance": 1,
+    "family": 5,
+    "movies": 3,
+    "outdoor": 3,
+    "free": 4,
+    "drama": 1,
+    "adult": 2,
+    "arts": 1,
+    "crafts": 1,
+    "fair": 1,
+    "community": 2,
+    "charity": 1,
+    "motorcycle": 1,
+    "bbq": 1,
+    "festival": 2,
+    "beer": 1,
+    "music": 2,
+    "art": 1,
+    "tour": 1,
+    "self-guided": 1,
+    "blues": 1,
+    "multi-day": 1
+  }
+}

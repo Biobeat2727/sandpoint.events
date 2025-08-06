@@ -1,0 +1,85 @@
+{
+  "pipeline_run": {
+    "timestamp": "2025-08-06T17:38:40.956Z",
+    "duration_ms": 26624,
+    "duration_minutes": 0,
+    "status": "success"
+  },
+  "configuration": {
+    "scraping": {
+      "sandpoint_online": true,
+      "eventbrite": true,
+      "local_venues": true,
+      "city_official": true,
+      "facebook": false
+    },
+    "enhancements": {
+      "images": true,
+      "summaries": true,
+      "sanity_upload": false
+    }
+  },
+  "results": {
+    "scraping": {},
+    "images": {
+      "processed": 10,
+      "downloaded": 0,
+      "fallbacksGenerated": 10,
+      "errors": [],
+      "imageDirectory": "C:\\Users\\davey\\sandpoint-events\\public\\images\\eventimages",
+      "fallbackDirectory": "C:\\Users\\davey\\sandpoint-events\\public\\images\\fallbacks"
+    },
+    "summaries": {
+      "processed": 10,
+      "summariesGenerated": 0,
+      "descriptionsImproved": 7,
+      "errors": [],
+      "options": {
+        "maxSummaryLength": 250,
+        "generateShortSummary": true,
+        "improveExistingDescriptions": true,
+        "addKeywords": true
+      }
+    },
+    "sanity": {}
+  },
+  "errors": [],
+  "files_generated": [
+    {
+      "path": "merged-events/events.json",
+      "size": 6287,
+      "modified": "2025-08-06T17:38:40.936Z"
+    },
+    {
+      "path": "merged-events/events-enhanced.json",
+      "size": 6797,
+      "modified": "2025-08-06T17:38:40.951Z"
+    },
+    {
+      "path": "merged-events/events-summarized.json",
+      "size": 8361,
+      "modified": "2025-08-06T17:38:40.951Z"
+    },
+    {
+      "path": "merged-events/merge-report.json",
+      "size": 929,
+      "modified": "2025-08-06T17:38:40.936Z"
+    },
+    {
+      "path": "pipeline-report.json",
+      "size": 843,
+      "modified": "2025-08-06T17:38:40.936Z"
+    },
+    {
+      "path": "complete-pipeline-report.json",
+      "size": 1277,
+      "modified": "2025-08-06T17:28:53.502Z"
+    }
+  ],
+  "next_steps": [
+    "Upload events to Sanity CMS for website display",
+    "Review events in Sanity Studio and publish",
+    "Update website to display new events",
+    "Schedule regular pipeline runs for ongoing updates"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "pipeline_run": {
+    "timestamp": "2025-08-06T17:38:40.937Z",
+    "duration_ms": 26605,
+    "duration_minutes": 0,
+    "status": "success"
+  },
+  "sources": {
+    "Sandpoint Online": {
+      "events": 0,
+      "status": "success"
+    },
+    "Eventbrite": {
+      "events": 0,
+      "status": "success"
+    },
+    "Local Venues": {
+      "events": 0,
+      "status": "success"
+    },
+    "City Official": {
+      "events": 0,
+      "status": "success"
+    }
+  },
+  "summary": {
+    "total_events_scraped": 0,
+    "final_merged_events": 10,
+    "duplicates_removed": -10,
+    "successful_sources": 4,
+    "failed_sources": 0
+  },
+  "errors": [],
+  "next_steps": [
+    "Review merged events in data/merged-events/events.json",
+    "Run image enhancement if needed",
+    "Generate event summaries if needed",
+    "Upload to Sanity CMS"
+  ]
+}
