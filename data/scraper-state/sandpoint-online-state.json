@@ -1,0 +1,24 @@
+{
+  "lastScrapedDate": "2025-09-16T22:24:14.624Z",
+  "lastProcessedIndex": 30,
+  "currentPage": 4,
+  "eventsPerPage": 10,
+  "totalEventsFound": 134,
+  "isComplete": false,
+  "metadata": {
+    "scraperVersion": "2.0.0",
+    "lastUpdated": "2025-09-16T22:24:14.624Z",
+    "settings": {
+      "baseUrl": "https://sandpointonline.com",
+      "eventsUrl": "https://sandpointonline.com/current/index.shtml",
+      "source": "Sandpoint Online"
+    }
+  },
+  "statistics": {
+    "totalEventsScraped": 21,
+    "eventsNeedingReview": 4,
+    "eventsReadyForProduction": 17,
+    "lastRunDuration": 1014,
+    "averageEventsPerRun": 5
+  }
+}

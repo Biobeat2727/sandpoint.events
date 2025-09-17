@@ -1,0 +1,170 @@
+{
+  "timestamp": "2025-08-06T21:53:37.522Z",
+  "imageDirectory": "C:\\Users\\davey\\sandpoint-events\\public\\images\\eventimages",
+  "totalImages": 27,
+  "totalSizeBytes": 7210354,
+  "images": [
+    {
+      "filename": "artists-studio-tour-db46cb27.jpg",
+      "size": 139400,
+      "created": "2025-08-06T21:50:08.469Z",
+      "modified": "2025-08-06T21:53:37.435Z"
+    },
+    {
+      "filename": "artwalk.jpg",
+      "size": 162509,
+      "created": "2025-05-09T16:58:52.086Z",
+      "modified": "2025-05-09T16:58:48.516Z"
+    },
+    {
+      "filename": "bikerodeo.jpg",
+      "size": 183887,
+      "created": "2025-05-09T16:36:36.158Z",
+      "modified": "2025-05-09T16:36:29.544Z"
+    },
+    {
+      "filename": "bluesfest-priest-river-42545138.jpg",
+      "size": 87123,
+      "created": "2025-08-06T21:50:08.649Z",
+      "modified": "2025-08-06T21:53:37.516Z"
+    },
+    {
+      "filename": "celebrationoflife.jpg",
+      "size": 912002,
+      "created": "2025-05-09T17:04:46.628Z",
+      "modified": "2025-05-09T17:04:44.215Z"
+    },
+    {
+      "filename": "christmas-in-august-poker-run-e50116f7.jpg",
+      "size": 88126,
+      "created": "2025-08-06T21:50:06.651Z",
+      "modified": "2025-08-06T21:53:32.981Z"
+    },
+    {
+      "filename": "cominhome.jpg",
+      "size": 481955,
+      "created": "2025-05-09T17:07:45.219Z",
+      "modified": "2025-05-09T17:07:42.518Z"
+    },
+    {
+      "filename": "eichardts-show.png",
+      "size": 225454,
+      "created": "2025-05-05T21:10:16.254Z",
+      "modified": "2025-05-05T21:09:13.886Z"
+    },
+    {
+      "filename": "fall-fest-schweitzer-46883046.jpg",
+      "size": 54526,
+      "created": "2025-08-06T21:50:08.255Z",
+      "modified": "2025-08-06T21:53:37.343Z"
+    },
+    {
+      "filename": "hive-open-mic-night-42545138.jpg",
+      "size": 87123,
+      "created": "2025-08-06T21:50:07.549Z",
+      "modified": "2025-08-06T21:53:15.934Z"
+    },
+    {
+      "filename": "if4.png",
+      "size": 521218,
+      "created": "2025-05-06T23:25:47.690Z",
+      "modified": "2025-05-06T23:25:47.690Z"
+    },
+    {
+      "filename": "ipa.png",
+      "size": 160833,
+      "created": "2025-05-06T23:19:02.094Z",
+      "modified": "2025-05-06T23:18:54.679Z"
+    },
+    {
+      "filename": "live-music-fridays-mickduffs-42545138.jpg",
+      "size": 87123,
+      "created": "2025-08-06T21:50:07.193Z",
+      "modified": "2025-08-06T21:53:15.732Z"
+    },
+    {
+      "filename": "longbridge.png",
+      "size": 1303033,
+      "created": "2025-05-09T16:46:42.663Z",
+      "modified": "2025-05-09T16:46:39.272Z"
+    },
+    {
+      "filename": "lostinthe50s.jpg",
+      "size": 146624,
+      "created": "2025-05-09T17:02:33.111Z",
+      "modified": "2025-05-09T17:02:30.424Z"
+    },
+    {
+      "filename": "marlowe1.jpg",
+      "size": 1241569,
+      "created": "2025-05-09T17:29:41.041Z",
+      "modified": "2025-05-09T17:29:33.288Z"
+    },
+    {
+      "filename": "mary-poppins-42545138.jpg",
+      "size": 87123,
+      "created": "2025-08-06T21:50:08.783Z",
+      "modified": "2025-08-06T21:53:16.579Z"
+    },
+    {
+      "filename": "movies-on-the-mountain-aug-08-49c6b060.jpg",
+      "size": 143828,
+      "created": "2025-08-06T21:50:06.167Z",
+      "modified": "2025-08-06T21:53:28.689Z"
+    },
+    {
+      "filename": "movies-on-the-mountain-aug-15-49c6b060.jpg",
+      "size": 143828,
+      "created": "2025-08-06T21:50:07.019Z",
+      "modified": "2025-08-06T21:53:34.457Z"
+    },
+    {
+      "filename": "movies-on-the-mountain-aug-22-49c6b060.jpg",
+      "size": 143828,
+      "created": "2025-08-06T21:50:07.763Z",
+      "modified": "2025-08-06T21:53:35.892Z"
+    },
+    {
+      "filename": "poac-annual-arts-and-crafts-fair-e50116f7.jpg",
+      "size": 88126,
+      "created": "2025-08-06T21:50:06.503Z",
+      "modified": "2025-08-06T21:53:32.896Z"
+    },
+    {
+      "filename": "sandpoint-community-art-walk-db46cb27.jpg",
+      "size": 139400,
+      "created": "2025-08-06T21:50:08.024Z",
+      "modified": "2025-08-06T21:53:16.162Z"
+    },
+    {
+      "filename": "sandpoint-farmers-market-summer-festival-e50116f7.jpg",
+      "size": 88126,
+      "created": "2025-08-06T21:50:07.373Z",
+      "modified": "2025-08-06T21:53:15.833Z"
+    },
+    {
+      "filename": "sandpoint-on-stage-criminals-cb964003.jpg",
+      "size": 87095,
+      "created": "2025-08-06T21:50:06.312Z",
+      "modified": "2025-08-06T21:53:31.645Z"
+    },
+    {
+      "filename": "schweitzer-mountain-concert-series-42545138.jpg",
+      "size": 87123,
+      "created": "2025-08-06T21:50:06.844Z",
+      "modified": "2025-08-06T21:53:15.536Z"
+    },
+    {
+      "filename": "summer-theater-camp-three-musketeers-cb964003.jpg",
+      "size": 87095,
+      "created": "2025-08-06T21:50:05.883Z",
+      "modified": "2025-08-06T21:53:30.384Z"
+    },
+    {
+      "filename": "truckmills.jpg",
+      "size": 232277,
+      "created": "2025-05-09T16:42:13.829Z",
+      "modified": "2025-05-09T16:42:11.075Z"
+    }
+  ]
+}

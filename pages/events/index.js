@@ -42,50 +42,162 @@ export default function AllEventsPage({ events }) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white text-gray-800 px-6 pt-28 pb-12 max-w-5xl mx-auto">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
-          <h1 className="text-4xl font-bold">All Events</h1>
-          <Link
-            href="/events/calendar"
-            className="mt-4 sm:mt-0 inline-flex items-center justify-center bg-green-700 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium hover:bg-green-800 transition w-full sm:w-auto text-center"
-          >
-            📅 View Calendar
-          </Link>
-        </div>
+      <main className="min-h-screen bg-neutral-50 pt-24 pb-16">
+        {/* Page Header */}
+        <section className="section-padding bg-gradient-to-r from-brand-600 to-brand-700 text-white">
+          <div className="container-responsive">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              <div className="animate-fade-in">
+                <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                  All Events
+                </h1>
+                <p className="text-lg text-brand-100 max-w-2xl">
+                  Discover amazing events happening in and around Sandpoint. Filter by category or search to find exactly what you're looking for.
+                </p>
+              </div>
+              <div className="flex-shrink-0 animate-slide-up">
+                <Link
+                  href="/events/calendar"
+                  className="btn bg-white text-brand-600 hover:bg-brand-50 text-lg px-8 py-4 shadow-lg"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  View Calendar
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <input
-          type="text"
-          placeholder="Search Events..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full p-2 mb-4 rounded border border-gray-300"
-        />
+        {/* Filters Section */}
+        <section className="section-padding bg-white border-b border-neutral-200">
+          <div className="container-responsive">
+            <div className="max-w-4xl mx-auto space-y-6">
+              {/* Search */}
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg className="w-5 h-5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Search events by title, description, or location..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="form-input pl-10 text-base h-12 shadow-soft"
+                />
+              </div>
 
-        <div className="flex flex-wrap gap-2 mb-6">
-          {allTags.map((tag) => (
-            <button
-              key={tag}
-              onClick={() => handleTagToggle(tag)}
-              className={`px-3 py-1 rounded-full text-sm border ${
-                activeTags.includes(tag)
-                  ? "bg-green-500 text-white"
-                  : "bg-white text-gray-700 border-gray-300"
-              }`}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
+              {/* Filter Tags */}
+              <div className="space-y-3">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <h3 className="text-lg font-semibold text-neutral-900">
+                    Filter by Category
+                  </h3>
+                  {activeTags.length > 0 && (
+                    <button
+                      onClick={() => setActiveTags([])}
+                      className="text-sm text-neutral-500 hover:text-brand-600 transition-colors flex items-center"
+                    >
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                      Clear All Filters
+                    </button>
+                  )}
+                </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredEvents.length > 0 ? (
-            filteredEvents.map((event) => (
-              <EventCard key={event._id} event={event} />
-            ))
-          ) : (
-            <p className="text-gray-500">No matching events found.</p>
-          )}
-        </div>
+                <div className="flex flex-wrap gap-2">
+                  {allTags.map((tag) => {
+                    const isActive = activeTags.includes(tag);
+                    return (
+                      <button
+                        key={tag}
+                        onClick={() => handleTagToggle(tag)}
+                        className={`tag tag-interactive ${
+                          isActive ? "tag-primary" : "tag-secondary"
+                        } transition-all duration-200`}
+                      >
+                        {tag}
+                        {isActive && (
+                          <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                {/* Results Summary */}
+                <div className="text-sm text-neutral-600 pt-2">
+                  {filteredEvents.length === sortedEvents.length ? (
+                    <span>Showing all {filteredEvents.length} events</span>
+                  ) : (
+                    <span>
+                      Showing {filteredEvents.length} of {sortedEvents.length} events
+                      {searchTerm && (
+                        <span> matching "{searchTerm}"</span>
+                      )}
+                      {activeTags.length > 0 && (
+                        <span> in {activeTags.join(", ")}</span>
+                      )}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Events Grid */}
+        <section className="section-padding">
+          <div className="container-responsive">
+            {filteredEvents.length > 0 ? (
+              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                {filteredEvents.map((event, index) => (
+                  <div key={event._id} className="animate-slide-up" style={{ animationDelay: `${index * 50}ms` }}>
+                    <EventCard event={event} />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-16">
+                <div className="w-24 h-24 mx-auto mb-6 bg-neutral-100 rounded-full flex items-center justify-center">
+                  <svg className="w-12 h-12 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-neutral-900 mb-2">
+                  No Events Found
+                </h3>
+                <p className="text-neutral-600 mb-6 max-w-md mx-auto">
+                  {searchTerm || activeTags.length > 0
+                    ? "Try adjusting your search or filters to find more events."
+                    : "There are no events available at the moment. Check back soon!"}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  {(searchTerm || activeTags.length > 0) && (
+                    <button
+                      onClick={() => {
+                        setSearchTerm("");
+                        setActiveTags([]);
+                      }}
+                      className="btn btn-outline"
+                    >
+                      Clear All Filters
+                    </button>
+                  )}
+                  <Link href="/venues" className="btn btn-primary">
+                    Browse Venues
+                  </Link>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
       </main>
       <Footer />
     </>
@@ -93,7 +205,7 @@ export default function AllEventsPage({ events }) {
 }
 
 // Fetch events from Sanity
-const query = `*[_type == "event"]{
+const query = `*[_type == "event" && published == true]{
   _id,
   title,
   "slug": slug.current,

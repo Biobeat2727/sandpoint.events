@@ -130,41 +130,59 @@ class SanityUploader {
         _type: 'slug',
         current: event.slug
       },
-      date: event.date,
+      // Handle both legacy and new date fields
+      date: event.date || event.startDate,
+      startDate: event.startDate || event.date,
+      endDate: event.endDate || null,
+      startTime: event.startTime || null,
+      endTime: event.endTime || null,
       description: event.description || '',
       tags: event.tags || [],
       url: event.url || null,
-      tickets: event.tickets || null,
+      tickets: event.tickets || event.ticketUrl || null,
+      referenceUrl: event.referenceUrl || event.url || null,
+      needsReview: event.needsReview || false,
+      locationNote: event.locationNote || null,
       // Add source information
       source: event.source || 'Unknown',
-      scrapedAt: event.scraped_at || new Date().toISOString()
+      scrapedAt: event.scraped_at || event.scrapedAt || new Date().toISOString(),
+      // Default to published unless flagged for review
+      published: !(event.needsReview || false)
     };
 
-    // Handle image
-    if (event.image) {
-      // If it's a local image path, upload it to Sanity
-      if (event.image.startsWith('/images/')) {
-        try {
-          const imagePath = path.join(this.baseDir, 'public', event.image);
+    // Handle images - check both 'image' and 'imageUrl' fields
+    const imageSource = event.imageUrl || event.image;
+    if (imageSource) {
+      try {
+        let imageAsset = null;
+        
+        // If it's a local image path, upload it to Sanity
+        if (imageSource.startsWith('/images/')) {
+          const imagePath = path.join(this.baseDir, 'public', imageSource);
           if (await fs.pathExists(imagePath)) {
-            const imageAsset = await this.uploadImageToSanity(imagePath, event.title);
-            if (imageAsset) {
-              sanityEvent.image = {
-                _type: 'image',
-                asset: {
-                  _type: 'reference',
-                  _ref: imageAsset._id
-                }
-              };
-            }
+            imageAsset = await this.uploadImageToSanity(imagePath, event.title);
           }
-        } catch (error) {
-          console.warn(`  ⚠️  Could not upload image for ${event.title}:`, error.message);
+        } 
+        // If it's an external URL, download and upload to Sanity
+        else if (imageSource.startsWith('http')) {
+          imageAsset = await this.downloadAndUploadImageToSanity(imageSource, event.title);
         }
-      } else {
-        // Store external URL as a simple string for now
-        // In production, you might want to download and upload external images
-        sanityEvent.imageUrl = event.image;
+
+        if (imageAsset) {
+          sanityEvent.image = {
+            _type: 'image',
+            asset: {
+              _type: 'reference',
+              _ref: imageAsset._id
+            }
+          };
+          // Event has image - ensure it stays published (unless flagged for review)
+          if (!event.needsReview) {
+            sanityEvent.published = true;
+          }
+        }
+      } catch (error) {
+        console.warn(`  ⚠️  Could not upload image for ${event.title}:`, error.message);
       }
     }
 
@@ -302,6 +320,78 @@ class SanityUploader {
     }
   }
 
+  async downloadAndUploadImageToSanity(imageUrl, altText = '') {
+    const https = require('https');
+    const http = require('http');
+    const { URL } = require('url');
+    
+    return new Promise((resolve, reject) => {
+      try {
+        const parsedUrl = new URL(imageUrl);
+        const protocol = parsedUrl.protocol === 'https:' ? https : http;
+        
+        console.log(`    📥 Downloading image: ${imageUrl}`);
+        
+        const request = protocol.get(imageUrl, (response) => {
+          if (response.statusCode !== 200) {
+            console.warn(`    ⚠️  Image download failed with status: ${response.statusCode}`);
+            resolve(null);
+            return;
+          }
+          
+          // Get file extension from URL or content-type
+          let extension = path.extname(parsedUrl.pathname).toLowerCase();
+          if (!extension && response.headers['content-type']) {
+            const contentType = response.headers['content-type'];
+            if (contentType.includes('jpeg') || contentType.includes('jpg')) extension = '.jpg';
+            else if (contentType.includes('png')) extension = '.png';
+            else if (contentType.includes('webp')) extension = '.webp';
+            else if (contentType.includes('gif')) extension = '.gif';
+          }
+          
+          const chunks = [];
+          response.on('data', chunk => chunks.push(chunk));
+          
+          response.on('end', async () => {
+            try {
+              const imageBuffer = Buffer.concat(chunks);
+              const filename = `event-image-${Date.now()}${extension || '.jpg'}`;
+              
+              console.log(`    📤 Uploading to Sanity: ${filename}`);
+              
+              const asset = await this.client.assets.upload('image', imageBuffer, {
+                filename,
+                title: altText || 'Event Image'
+              });
+              
+              console.log(`    ✅ Image uploaded successfully: ${asset._id}`);
+              resolve(asset);
+            } catch (uploadError) {
+              console.error(`    ❌ Error uploading image to Sanity:`, uploadError.message);
+              resolve(null);
+            }
+          });
+        });
+        
+        request.on('error', (error) => {
+          console.warn(`    ⚠️  Error downloading image ${imageUrl}:`, error.message);
+          resolve(null);
+        });
+        
+        // Set timeout for download
+        request.setTimeout(30000, () => {
+          console.warn(`    ⚠️  Image download timeout: ${imageUrl}`);
+          request.destroy();
+          resolve(null);
+        });
+        
+      } catch (error) {
+        console.warn(`    ⚠️  Invalid image URL ${imageUrl}:`, error.message);
+        resolve(null);
+      }
+    });
+  }
+
   generateSlug(text) {
     return text
       .toLowerCase()
@@ -322,7 +412,8 @@ class SanityUploader {
         title: event.title,
         date: event.date,
         venue: typeof event.venue === 'string' ? event.venue : event.venue?.name,
-        hasImage: !!event.image,
+        hasImage: !!(event.image || event.imageUrl),
+        willBePublished: !!(event.image || event.imageUrl),
         tags: event.tags?.length || 0
       })),
       uniqueVenues: [...new Set(events.map(e => 
@@ -346,6 +437,7 @@ class SanityUploader {
       console.log(`     Date: ${event.date}`);
       console.log(`     Venue: ${event.venue || 'None'}`);
       console.log(`     Image: ${event.hasImage ? 'Yes' : 'No'}`);
+      console.log(`     Will be published: ${event.willBePublished ? 'Yes' : 'No (draft)'}`);
       console.log(`     Tags: ${event.tags}`);
     });
 
@@ -403,6 +495,256 @@ class SanityUploader {
         hasToken: !!this.sanityConfig.token
       }
     };
+  }
+
+  // Fetch all existing events from Sanity
+  async getAllEventsFromSanity() {
+    try {
+      const events = await this.client.fetch('*[_type == "event"] | order(date asc)');
+      console.log(`📋 Found ${events.length} existing events in Sanity`);
+      return events;
+    } catch (error) {
+      console.error('Error fetching events from Sanity:', error.message);
+      throw error;
+    }
+  }
+
+  // Update all existing events with enhanced data (URLs, images, etc.)
+  async enhanceAllExistingEvents(options = {}) {
+    console.log('🚀 Starting comprehensive event enhancement...');
+    
+    if (!this.sanityConfig.token) {
+      throw new Error('Sanity token required for event enhancement');
+    }
+
+    try {
+      // Get all existing events from Sanity
+      const existingEvents = await this.getAllEventsFromSanity();
+      
+      // Enhanced events with URLs and images
+      let enhancedEventsPath = path.join(this.baseDir, 'data', 'merged-events', 'real-enhanced-events.json');
+      let enhancedEvents = [];
+      
+      // Try real enhanced events first, fallback to original
+      if (options.useRealEnhancedEvents && await fs.pathExists(enhancedEventsPath)) {
+        enhancedEvents = await fs.readJson(enhancedEventsPath);
+        console.log(`📊 Found ${enhancedEvents.length} real enhanced events with local images`);
+      } else {
+        enhancedEventsPath = path.join(this.baseDir, 'data', 'merged-events', 'events-enhanced-with-urls.json');
+        if (await fs.pathExists(enhancedEventsPath)) {
+          enhancedEvents = await fs.readJson(enhancedEventsPath);
+          console.log(`📊 Found ${enhancedEvents.length} pre-enhanced events with URLs/images`);
+        }
+      }
+
+      // Create enhancement mapping
+      const enhancementMap = new Map();
+      enhancedEvents.forEach(event => {
+        // Try multiple matching strategies
+        const keys = [
+          event.slug,
+          this.generateSlug(event.title),
+          event.title.toLowerCase()
+        ];
+        keys.forEach(key => {
+          if (key) enhancementMap.set(key, event);
+        });
+      });
+
+      console.log(`🔄 Enhancing ${existingEvents.length} existing events...`);
+      
+      const results = {
+        enhanced: 0,
+        imagesAdded: 0,
+        urlsAdded: 0,
+        errors: []
+      };
+
+      // Process each existing event
+      for (const existingEvent of existingEvents) {
+        try {
+          console.log(`\n🔧 Processing: ${existingEvent.title}`);
+          
+          // Find enhancement data
+          let enhancementData = null;
+          const searchKeys = [
+            existingEvent.slug?.current,
+            this.generateSlug(existingEvent.title),
+            existingEvent.title.toLowerCase()
+          ];
+          
+          for (const key of searchKeys) {
+            if (key && enhancementMap.has(key)) {
+              enhancementData = enhancementMap.get(key);
+              console.log(`  📍 Found enhancement data via key: ${key}`);
+              break;
+            }
+          }
+
+          // If no direct match, try fuzzy matching
+          if (!enhancementData) {
+            enhancementData = this.findBestMatch(existingEvent, enhancedEvents);
+            if (enhancementData) {
+              console.log(`  🎯 Found enhancement via fuzzy matching`);
+            }
+          }
+
+          // Apply enhancements
+          const updates = {};
+          let hasUpdates = false;
+
+          // Add URL if available and not already present
+          if (enhancementData && enhancementData.url && !existingEvent.url) {
+            updates.url = enhancementData.url;
+            hasUpdates = true;
+            results.urlsAdded++;
+            console.log(`  🔗 Adding URL: ${enhancementData.url}`);
+          }
+
+          // Add ticket URL if available
+          if (enhancementData && (enhancementData.ticketUrl || enhancementData.tickets) && !existingEvent.tickets) {
+            updates.tickets = enhancementData.ticketUrl || enhancementData.tickets;
+            hasUpdates = true;
+            console.log(`  🎫 Adding ticket URL`);
+          }
+
+          // Add/update image if available and not already present
+          if (enhancementData && enhancementData.imageUrl && !existingEvent.image) {
+            console.log(`  🖼️  Processing image: ${enhancementData.imageUrl}`);
+            try {
+              const imageAsset = await this.downloadAndUploadImageToSanity(
+                enhancementData.imageUrl, 
+                existingEvent.title
+              );
+              
+              if (imageAsset) {
+                updates.image = {
+                  _type: 'image',
+                  asset: {
+                    _type: 'reference',
+                    _ref: imageAsset._id
+                  }
+                };
+                // Event now has image, mark as published
+                updates.published = true;
+                hasUpdates = true;
+                results.imagesAdded++;
+                console.log(`  ✅ Image uploaded and added - event marked as published`);
+              }
+            } catch (imageError) {
+              console.warn(`  ⚠️  Image upload failed: ${imageError.message}`);
+            }
+          }
+
+          // Add other missing data
+          if (enhancementData) {
+            if (enhancementData.description && (!existingEvent.description || existingEvent.description.length < 50)) {
+              updates.description = enhancementData.description;
+              hasUpdates = true;
+            }
+            
+            if (enhancementData.tags && enhancementData.tags.length > 0 && (!existingEvent.tags || existingEvent.tags.length === 0)) {
+              updates.tags = enhancementData.tags;
+              hasUpdates = true;
+            }
+
+            if (enhancementData.price && !existingEvent.price) {
+              updates.price = enhancementData.price;
+              hasUpdates = true;
+            }
+          }
+
+          // Apply updates if any
+          if (hasUpdates) {
+            await this.client.patch(existingEvent._id).set(updates).commit();
+            results.enhanced++;
+            console.log(`  ✨ Event enhanced successfully`);
+          } else {
+            console.log(`  ⏭️  No enhancements needed`);
+          }
+
+        } catch (error) {
+          console.error(`  ❌ Error enhancing ${existingEvent.title}:`, error.message);
+          results.errors.push({
+            event: existingEvent.title,
+            error: error.message
+          });
+        }
+      }
+
+      console.log('\n📊 Enhancement Summary:');
+      console.log(`  • Events enhanced: ${results.enhanced}`);
+      console.log(`  • Images added: ${results.imagesAdded}`);
+      console.log(`  • URLs added: ${results.urlsAdded}`);
+      console.log(`  • Errors: ${results.errors.length}`);
+
+      return results;
+
+    } catch (error) {
+      console.error('❌ Event enhancement failed:', error.message);
+      throw error;
+    }
+  }
+
+  // Helper method for fuzzy matching events
+  findBestMatch(existingEvent, enhancedEvents) {
+    const existingTitle = existingEvent.title.toLowerCase();
+    let bestMatch = null;
+    let bestScore = 0;
+
+    for (const enhanced of enhancedEvents) {
+      const enhancedTitle = enhanced.title.toLowerCase();
+      
+      // Simple similarity check
+      const score = this.calculateSimilarity(existingTitle, enhancedTitle);
+      
+      if (score > 0.8 && score > bestScore) {
+        bestScore = score;
+        bestMatch = enhanced;
+      }
+    }
+
+    return bestMatch;
+  }
+
+  // Simple string similarity calculation
+  calculateSimilarity(str1, str2) {
+    const longer = str1.length > str2.length ? str1 : str2;
+    const shorter = str1.length > str2.length ? str2 : str1;
+    
+    if (longer.length === 0) return 1.0;
+    
+    const editDistance = this.levenshteinDistance(longer, shorter);
+    return (longer.length - editDistance) / longer.length;
+  }
+
+  // Levenshtein distance calculation
+  levenshteinDistance(str1, str2) {
+    const matrix = [];
+    
+    for (let i = 0; i <= str2.length; i++) {
+      matrix[i] = [i];
+    }
+    
+    for (let j = 0; j <= str1.length; j++) {
+      matrix[0][j] = j;
+    }
+    
+    for (let i = 1; i <= str2.length; i++) {
+      for (let j = 1; j <= str1.length; j++) {
+        if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+          matrix[i][j] = matrix[i - 1][j - 1];
+        } else {
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j - 1] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j] + 1
+          );
+        }
+      }
+    }
+    
+    return matrix[str2.length][str1.length];
   }
 }
 

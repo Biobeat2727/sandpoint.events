@@ -1,48 +1,45 @@
 {
-  "timestamp": "2025-08-06T17:38:40.936Z",
-  "original_count": 15,
-  "merged_count": 10,
-  "duplicates_removed": 5,
+  "timestamp": "2025-09-16T22:29:29.706Z",
+  "original_count": 16,
+  "production_count": 0,
+  "review_count": 16,
+  "total_merged_count": 16,
+  "duplicates_removed": 0,
   "sources": {
-    "sandpoint-online": 10,
-    "festival-at-sandpoint": 5
+    "Sandpoint Online": 10,
+    "Schweitzer Mountain Resort": 6
   },
   "date_range": {
-    "earliest": "2025-08-08T18:00:00.000Z",
-    "latest": "2025-09-04T18:00:00.000Z"
+    "earliest": "2025-09-16T22:24:28.947Z",
+    "latest": "2025-09-19T07:00:00.000Z"
   },
   "venues": {
-    "Panida Theater": 2,
-    "Schweitzer Mountain Resort": 4,
-    "Downtown Sandpoint": 1,
-    "Sandpoint Lions Club": 1,
-    "Various Studios": 1,
-    "Priest River Venue": 1
+    "Schweitzer Mountain Resort": 6,
+    "The Tervan": 1,
+    "Panida Theater": 1,
+    "Evans Brothers Coffee": 1,
+    "Barrel 33": 1,
+    "Unknown": 3,
+    "Connie's Lounge": 1,
+    "Pend d'Oreille Winery": 1,
+    "the Create Arts": 1
   },
   "tags": {
-    "theater": 2,
-    "youth": 1,
-    "performance": 1,
-    "family": 5,
-    "movies": 3,
-    "outdoor": 3,
-    "free": 4,
-    "drama": 1,
-    "adult": 2,
-    "arts": 1,
-    "crafts": 1,
-    "fair": 1,
-    "community": 2,
-    "charity": 1,
-    "motorcycle": 1,
-    "bbq": 1,
-    "festival": 2,
-    "beer": 1,
-    "music": 2,
-    "art": 1,
-    "tour": 1,
-    "self-guided": 1,
-    "blues": 1,
-    "multi-day": 1
+    "community": 16,
+    "event": 16,
+    "art": 7,
+    "live": 6,
+    "music": 5,
+    "festival": 1,
+    "food": 4,
+    "fundraiser": 1
+  },
+  "field_completeness": {
+    "startDate": 16,
+    "endDate": 0,
+    "startTime": 10,
+    "endTime": 5,
+    "referenceUrl": 16,
+    "locationNote": 1
   }
 }

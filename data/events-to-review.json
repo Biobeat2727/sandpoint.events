@@ -1,0 +1,51 @@
+[
+  {
+    "id": "dc094da6-a6b7-43a0-9448-cac88baba63a",
+    "title": "Terry Rob at the Create Arts Center",
+    "slug": "terry-rob-at-the-create-arts-center",
+    "description": "Join in Newport at the Create Arts Center, 900 W. 4th St. at 6 p.m. to see Terry Robb solo. Hailed as a blues guitar virtuoso and one of the finest acoustic guitarists on the international scene. Its a night to remember. Tickets 20",
+    "date": "2025-09-19T07:00:00.000Z",
+    "startDate": "2025-09-19T07:00:00.000Z",
+    "endDate": null,
+    "startTime": "18:00",
+    "endTime": "20:00",
+    "image": null,
+    "imageUrl": null,
+    "url": null,
+    "referenceUrl": "https://sandpointonline.com/current/index.shtml",
+    "ticketUrl": null,
+    "venue": {
+      "name": "the Create Arts",
+      "address": "",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zipCode": "",
+      "phone": "",
+      "website": ""
+    },
+    "locationNote": null,
+    "needsReview": true,
+    "tags": [
+      "art",
+      "community",
+      "event",
+      "food",
+      "music",
+      "nightlife"
+    ],
+    "source": "Sandpoint Online",
+    "location": "Sandpoint, ID",
+    "price": "$20",
+    "contact": null,
+    "performer": null,
+    "organizer": null,
+    "scrapedAt": "2025-09-16T22:24:14.624Z",
+    "rescueAttempt": {
+      "fixesAttempted": [
+        "Added missing end times",
+        "Enhanced event tags"
+      ],
+      "stillNeedsReview": "Event in Newport - outside Sandpoint coverage area"
+    }
+  }
+]

@@ -1,9 +1,9 @@
 {
   "pipeline_run": {
-    "timestamp": "2025-08-06T17:38:40.956Z",
-    "duration_ms": 26624,
+    "timestamp": "2025-08-08T06:04:37.007Z",
+    "duration_ms": 20364,
     "duration_minutes": 0,
-    "status": "success"
+    "status": "partial_success"
   },
   "configuration": {
     "scraping": {
@@ -16,23 +16,23 @@
     "enhancements": {
       "images": true,
       "summaries": true,
-      "sanity_upload": false
+      "sanity_upload": true
     }
   },
   "results": {
     "scraping": {},
     "images": {
-      "processed": 10,
+      "processed": 7,
       "downloaded": 0,
-      "fallbacksGenerated": 10,
+      "fallbacksGenerated": 7,
       "errors": [],
       "imageDirectory": "C:\\Users\\davey\\sandpoint-events\\public\\images\\eventimages",
       "fallbackDirectory": "C:\\Users\\davey\\sandpoint-events\\public\\images\\fallbacks"
     },
     "summaries": {
-      "processed": 10,
+      "processed": 7,
       "summariesGenerated": 0,
-      "descriptionsImproved": 7,
+      "descriptionsImproved": 4,
       "errors": [],
       "options": {
         "maxSummaryLength": 250,
@@ -43,41 +43,52 @@
     },
     "sanity": {}
   },
-  "errors": [],
+  "errors": [
+    {
+      "step": "sanity_upload",
+      "error": "Sanity project ID and dataset are required",
+      "timestamp": "2025-08-08T06:04:37.007Z"
+    }
+  ],
   "files_generated": [
     {
       "path": "merged-events/events.json",
-      "size": 6287,
-      "modified": "2025-08-06T17:38:40.936Z"
+      "size": 5658,
+      "modified": "2025-08-08T06:04:36.980Z"
     },
     {
       "path": "merged-events/events-enhanced.json",
-      "size": 6797,
-      "modified": "2025-08-06T17:38:40.951Z"
+      "size": 6012,
+      "modified": "2025-08-08T06:04:36.995Z"
     },
     {
       "path": "merged-events/events-summarized.json",
-      "size": 8361,
-      "modified": "2025-08-06T17:38:40.951Z"
+      "size": 7144,
+      "modified": "2025-08-08T06:04:37.008Z"
     },
     {
       "path": "merged-events/merge-report.json",
-      "size": 929,
-      "modified": "2025-08-06T17:38:40.936Z"
+      "size": 1319,
+      "modified": "2025-08-08T06:04:36.985Z"
     },
     {
       "path": "pipeline-report.json",
-      "size": 843,
-      "modified": "2025-08-06T17:38:40.936Z"
+      "size": 815,
+      "modified": "2025-08-08T06:04:36.988Z"
+    },
+    {
+      "path": "sanity-upload-report.json",
+      "size": 290,
+      "modified": "2025-08-06T21:42:21.333Z"
     },
     {
       "path": "complete-pipeline-report.json",
-      "size": 1277,
-      "modified": "2025-08-06T17:28:53.502Z"
+      "size": 2396,
+      "modified": "2025-08-06T18:17:01.527Z"
     }
   ],
   "next_steps": [
-    "Upload events to Sanity CMS for website display",
+    "Review and resolve pipeline errors",
     "Review events in Sanity Studio and publish",
     "Update website to display new events",
     "Schedule regular pipeline runs for ongoing updates"

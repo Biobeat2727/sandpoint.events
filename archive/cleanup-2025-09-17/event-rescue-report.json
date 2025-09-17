@@ -1,0 +1,88 @@
+{
+  "timestamp": "2025-09-16T22:32:58.701Z",
+  "stats": {
+    "totalProcessed": 16,
+    "rescued": 14,
+    "stillReview": 2,
+    "unfixable": 0,
+    "fixTypes": {
+      "dateFixed": 5,
+      "venueFixed": 3,
+      "titleCleaned": 3,
+      "timesAdded": 6,
+      "tagsImproved": 11,
+      "descriptionCleaned": 2
+    }
+  },
+  "rescuedEvents": [
+    {
+      "id": "6ed2ac2f-3249-4ab9-a019-aed7fa7756db",
+      "title": "Feel It All"
+    },
+    {
+      "id": "9476a0b7-3536-4184-877b-d15b11b17e32",
+      "title": "Fall Pass Sale Deadline"
+    },
+    {
+      "id": "0878a403-257f-4845-9118-2868f987c51c",
+      "title": "Opening Day"
+    },
+    {
+      "id": "2b705908-ae55-4bde-9aff-d8c3b395f442",
+      "title": "Ski With Santa"
+    },
+    {
+      "id": "472cb94c-33e0-4773-a7a4-584601fd4e92",
+      "title": "Taps New Years Eve"
+    },
+    {
+      "id": "b30d9ecf-23b3-4e3b-ad16-430de290f132",
+      "title": "Rock n Roll Bingo"
+    },
+    {
+      "id": "6eb70628-199a-4bae-b421-ed90ce73f310",
+      "title": "Aaron Foster Mostly Jokes Stand Up Comedy"
+    },
+    {
+      "id": "9b5f7709-9590-46b2-93d0-557f71078315",
+      "title": "Mostly Sandpoint Artist Reception for Jeanine Asche"
+    },
+    {
+      "id": "8f06f8f7-a317-4fe5-901e-2cf97d3c5448",
+      "title": "Paint Sip"
+    },
+    {
+      "id": "ffab065d-45c0-46e0-9557-fe9fe2fcff25",
+      "title": "Thursday Line Dancing Lessons"
+    },
+    {
+      "id": "2951bc7b-3f7f-49be-8887-15b019b92e0c",
+      "title": "Live Trivia"
+    },
+    {
+      "id": "2195e7c2-3c21-4cca-8b14-0c2d83068193",
+      "title": "Live Music with Maya, Arthur, and Peter"
+    },
+    {
+      "id": "710c6b36-27b6-4709-adc8-4a75af8159fe",
+      "title": "Bells Brews with the Sandpoint Music Conservatory"
+    },
+    {
+      "id": "f5b6bdf6-c500-4fd3-84ac-76b17bcf2cd4",
+      "title": "Live Music with Moneypenny"
+    }
+  ],
+  "stillNeedsReview": [
+    {
+      "id": "ac6e939e-a90a-463f-86b6-e1049675e951",
+      "title": "Nye Tubing Party",
+      "reason": "Still has placeholder date - needs real event date"
+    },
+    {
+      "id": "dc094da6-a6b7-43a0-9448-cac88baba63a",
+      "title": "Terry Rob at the Create Arts Center",
+      "reason": "Event in Newport - outside Sandpoint coverage area"
+    }
+  ],
+  "unfixableEvents": []
+}

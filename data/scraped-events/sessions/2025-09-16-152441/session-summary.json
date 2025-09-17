@@ -1,0 +1,20 @@
+{
+  "sessionId": "2025-09-16-152441",
+  "startTime": "2025-09-16T22:24:41.441Z",
+  "endTime": "2025-09-16T22:24:41.447Z",
+  "files": [
+    {
+      "filename": "schweitzer-2025-09-16.json",
+      "filepath": "C:\\Users\\davey\\sandpoint-events\\data\\scraped-events\\sessions\\2025-09-16-152441\\schweitzer-2025-09-16.json",
+      "eventCount": 6,
+      "savedAt": "2025-09-16T22:24:41.442Z"
+    }
+  ],
+  "totalEvents": 6,
+  "metadata": {
+    "scraper": "SchweitzerScraper",
+    "eventsFound": 6,
+    "needsReview": 6,
+    "source": "Schweitzer Mountain Resort"
+  }
+}

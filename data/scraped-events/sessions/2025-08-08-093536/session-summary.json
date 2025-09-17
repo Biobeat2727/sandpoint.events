@@ -1,0 +1,21 @@
+{
+  "sessionId": "2025-08-08-093536",
+  "startTime": "2025-08-08T16:35:36.603Z",
+  "endTime": "2025-08-08T16:35:36.617Z",
+  "files": [
+    {
+      "filename": "sandpoint-online-2025-08-08-page-2.json",
+      "filepath": "C:\\Users\\davey\\sandpoint-events\\data\\scraped-events\\sessions\\2025-08-08-093536\\sandpoint-online-2025-08-08-page-2.json",
+      "eventCount": 8,
+      "savedAt": "2025-08-08T16:35:36.604Z"
+    }
+  ],
+  "totalEvents": 8,
+  "metadata": {
+    "scraper": "SandpointOnlineScraper",
+    "eventsFound": 8,
+    "currentPage": 2,
+    "totalPagesProcessed": 2,
+    "source": "Sandpoint Online"
+  }
+}

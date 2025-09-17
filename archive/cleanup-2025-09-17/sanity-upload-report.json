@@ -1,14 +1,14 @@
 {
-  "timestamp": "2025-08-06T17:48:28.754Z",
+  "timestamp": "2025-09-16T22:44:12.070Z",
   "sanity_config": {
     "projectId": "0i231ejv",
     "dataset": "production",
     "hasToken": true
   },
   "results": {
-    "eventsUploaded": 10,
-    "venuesCreated": 5,
-    "eventsUpdated": 0,
+    "eventsUploaded": 0,
+    "venuesCreated": 0,
+    "eventsUpdated": 15,
     "errors": [],
     "duplicatesSkipped": 0
   }

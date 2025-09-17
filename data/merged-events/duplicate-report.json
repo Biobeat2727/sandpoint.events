@@ -1,7 +1,0 @@
-[
-  {
-    "kept": "Test Event 1",
-    "discarded": "Test Event 1",
-    "reason": "duplicate_detected"
-  }
-]

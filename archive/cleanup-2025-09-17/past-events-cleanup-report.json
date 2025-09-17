@@ -1,0 +1,10 @@
+{
+  "timestamp": "2025-08-07T02:37:33.876Z",
+  "cleanup_date": "2025-08-06",
+  "filesProcessed": 7,
+  "totalEvents": 77,
+  "pastEventsRemoved": 0,
+  "futureEventsKept": 77,
+  "invalidDatesFound": 0,
+  "errors": []
+}

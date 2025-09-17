@@ -1,0 +1,533 @@
+[
+  {
+    "_createdAt": "2025-05-23T22:39:45Z",
+    "_id": "30059cd3-3b97-423e-b9a2-f0f66a4311e6",
+    "_rev": "ecSttagJdpcXow3QAjYqms",
+    "_type": "event",
+    "_updatedAt": "2025-08-06T21:41:11Z",
+    "date": "2025-05-24T03:00:00.000Z",
+    "description": "Live music at IPA",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-c2f79492825b278c1e0d6c70204e35f14806c96c-1107x1107-png",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:07.314Z",
+    "slug": {
+      "_type": "slug",
+      "current": "ipa-witchead"
+    },
+    "source": "sanity-enhanced",
+    "tags": [
+      "community"
+    ],
+    "tickets": null,
+    "title": "Idaho Pour Authority hosts Witchead!",
+    "url": "https://www.cityofsandpoint.com/events/[object Object]"
+  },
+  {
+    "_createdAt": "2025-06-01T17:10:40Z",
+    "_id": "727c02c1-e5bf-4d02-9d76-48efb364a0e5",
+    "_rev": "q4vcwxRNPgidCixn9WtQkP",
+    "_type": "event",
+    "_updatedAt": "2025-08-06T21:41:14Z",
+    "date": "2025-06-04T01:00:00.000Z",
+    "description": "JOIN US FOR AN EVENING OF FILM AND CONVERSATION TO EXPLORE A UNIQUE PRACTICE OF MINDFULNESS AND SELF-AWARENESS.\nFor many of us the atmosphere in today’s world has created real questions\nabout the possibility of finding more meaning in our lives.\nDuring a similar period of uncertainty in the early 20th century a\nunique practice of mindfulness, self-awareness and transformation\nappeared in the west, brought by the Armenian spiritual teacher G.I.Gurdjieff.\nThrough film and conversation we’ll explore this avenue of personal\ndevelopment together.",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-82a3000e69cfc949e9020b4e025e23b33cadc7e4-1545x2000-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:11.858Z",
+    "slug": {
+      "_type": "slug",
+      "current": "way-to-mindfulness"
+    },
+    "source": "sanity-enhanced",
+    "tags": [
+      "Meditation",
+      "Bakery",
+      "Community "
+    ],
+    "tickets": null,
+    "title": "A New Way To Mindfulness",
+    "url": "https://www.eventbrite.com/e/a-new-way-of-mindfulness-tickets-1350017612019",
+    "venue": {
+      "_ref": "54eae2c4-d66c-4f96-a408-95e4f4a5fefc",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-05-27T20:45:56Z",
+    "_id": "4cb62184-4dd0-4a5f-84ff-f64535ccbc3e",
+    "_rev": "q4vcwxRNPgidCixn9WtRro",
+    "_type": "event",
+    "_updatedAt": "2025-08-06T21:41:18Z",
+    "date": "2025-06-04T22:00:00.000Z",
+    "description": "Rain or shine at Farmin Park from 3-5:30 p.m. Wednesdays, and 9am-1pm Saturday. You can find handcrafted items, fresh foods and produce, and more. Please remember, no dogs are allowed in Farmin Park.",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-82a3000e69cfc949e9020b4e025e23b33cadc7e4-1545x2000-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:15.267Z",
+    "slug": {
+      "_type": "slug",
+      "current": "farmer-market"
+    },
+    "source": "sanity-enhanced",
+    "tags": [
+      "community"
+    ],
+    "tickets": null,
+    "title": "Farmer's Market ",
+    "url": "https://www.cityofsandpoint.com/events/[object Object]",
+    "venue": {
+      "_ref": "a41c5b32-f9cb-4498-b428-9aacb68d142f",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-06-01T19:19:41Z",
+    "_id": "3525c571-b83a-41b3-8916-f85fcd3557e9",
+    "_rev": "OK3P6hFsqBQeLc1TOP1Id6",
+    "_type": "event",
+    "_updatedAt": "2025-08-06T21:41:21Z",
+    "date": "2025-06-07T04:00:00.000Z",
+    "description": "Yotes combines his rich baritone vocals with an energetic delivery, playing a mix of songs from 1950’s country, 1980’s neo rockabilly, modern Americana, and many genres and eras in between.  He mixes songs by Johnny Cash, The Stray Cats, The Blasters, and Murder By Death with his own compositions.  Old favorites are interspersed with some of his favorite songs by friends and up-and-coming artists he’s met through the years.",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-441a2bdd65c03dfdf1aa40aef08cd03ceda9d19c-1360x1600-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:18.828Z",
+    "slug": {
+      "_type": "slug",
+      "current": "yotes-219"
+    },
+    "source": "sanity-enhanced",
+    "tags": [
+      "Bar",
+      "Drinks",
+      "Live Music",
+      "Country",
+      "Music"
+    ],
+    "tickets": null,
+    "title": "Yotes at 219",
+    "url": "https://www.219lounge.com/",
+    "venue": {
+      "_ref": "3050b198-9c74-4b4d-a479-7ea680d827f7",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-05-23T20:19:15Z",
+    "_id": "fcdd7925-056c-4ada-8ab8-10489d6a6446",
+    "_rev": "ecSttagJdpcXow3QAjYfZq",
+    "_type": "event",
+    "_updatedAt": "2025-08-06T21:41:25Z",
+    "date": "2025-06-12T01:00:00.000Z",
+    "description": "Biobeat Hosts an Open Mic Night every second Wednesday of the month!",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-4fc1d4b4def6202bead22a0f07bfa743ae410ac9-505x650-png",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:22.313Z",
+    "slug": {
+      "_type": "slug",
+      "current": "eichs-openmic"
+    },
+    "source": "sanity-enhanced",
+    "tags": [
+      "community"
+    ],
+    "tickets": null,
+    "title": "Open Mic Night at Eichardt's Pub and Grill!",
+    "url": "https://www.cityofsandpoint.com/events/[object Object]",
+    "venue": {
+      "_ref": "202560ba-7b92-412c-9d2f-e50e55831d98",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-08-06T17:48:17Z",
+    "_id": "ecSttagJdpcXow3QAiwiSk",
+    "_rev": "ecSttagJdpcXow3QAjj4Ew",
+    "_system": {
+      "base": {
+        "id": "ecSttagJdpcXow3QAiwiSk",
+        "rev": "ecSttagJdpcXow3QAjYfuA"
+      }
+    },
+    "_type": "event",
+    "_updatedAt": "2025-08-06T22:33:19Z",
+    "date": "2025-08-09T01:30:00.000Z",
+    "description": "Student performance featuring talented actors ages 8-17 presenting their take on the classic adventure tale at the historic Panida Theater.",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-50c47fb44c9bdd8eafde2c9c40bb0608d31d6aed-683x786-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:25.889Z",
+    "slug": {
+      "_type": "slug",
+      "current": "summer-theater-camp-three-musketeers"
+    },
+    "source": "sandpoint-online",
+    "tags": [
+      "theater",
+      "youth",
+      "performance",
+      "family"
+    ],
+    "tickets": "https://www.etix.com/ticket/p/48947749/summer-theater-camp-presentsthe-three-musketeers-sandpoint-panida-theater",
+    "title": "Summer Theater Camp Presents: The Three Musketeers",
+    "url": "https://www.panida.org/event/summer-theater-camp-presents-the-three-musketeers---evening",
+    "venue": {
+      "_ref": "b4d95e34-123d-4555-9956-5cffffbe264d",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-08-06T17:48:24Z",
+    "_id": "ecSttagJdpcXow3QAiwir8",
+    "_rev": "q4vcwxRNPgidCixn9XQ2pK",
+    "_system": {
+      "base": {
+        "id": "ecSttagJdpcXow3QAiwir8",
+        "rev": "q4vcwxRNPgidCixn9WtogZ"
+      }
+    },
+    "_type": "event",
+    "_updatedAt": "2025-08-06T22:07:05Z",
+    "date": "2025-08-09T02:30:00.000Z",
+    "description": "Final week of the summer outdoor movie series at Schweitzer Mountain Resort with special activities and movie under the stars.",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-f1ff268d2c0e4b1a48ff8cb07c79d94f1f3da776-1024x576-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:59.622Z",
+    "slug": {
+      "_type": "slug",
+      "current": "movies-on-the-mountain-aug-22"
+    },
+    "source": "sandpoint-online",
+    "tags": [
+      "movies",
+      "outdoor",
+      "family",
+      "free"
+    ],
+    "tickets": "https://www.schweitzer.com/things-to-do/events/2-movies-on-the-mountain",
+    "title": "Movies on the Mountain",
+    "url": "https://www.schweitzer.com/things-to-do/events/2-movies-on-the-mountain",
+    "venue": {
+      "_ref": "ecSttagJdpcXow3QAiwiGY",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-08-06T17:48:20Z",
+    "_id": "q4vcwxRNPgidCixn9UeeoX",
+    "_rev": "ecSttagJdpcXow3QAjizry",
+    "_system": {
+      "base": {
+        "id": "q4vcwxRNPgidCixn9UeeoX",
+        "rev": "ecSttagJdpcXow3QAjitQI"
+      }
+    },
+    "_type": "event",
+    "_updatedAt": "2025-08-06T22:31:29Z",
+    "date": "2025-08-09T02:30:00.000Z",
+    "description": "Theatrical performance about criminal suspects recommended for ages 15. A gripping drama presented by local theater talents at Panida Little Theater.",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-10b535cc4367a6b12f2200ce04385e902d402ce8-582x900-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:33.415Z",
+    "slug": {
+      "_type": "slug",
+      "current": "sandpoint-on-stage-criminals"
+    },
+    "source": "sandpoint-online",
+    "tags": [
+      "theater",
+      "drama",
+      "adult"
+    ],
+    "tickets": "https://www.panida.org/event/criminals",
+    "title": "Sandpoint on Stage: \"Criminals\"",
+    "url": "https://www.panida.org/event/criminals",
+    "venue": {
+      "_ref": "b4d95e34-123d-4555-9956-5cffffbe264d",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-08-06T17:48:21Z",
+    "_id": "OK3P6hFsqBQeLc1TONnCOy",
+    "_rev": "ecSttagJdpcXow3QAjieOA",
+    "_system": {
+      "base": {
+        "id": "OK3P6hFsqBQeLc1TONnCOy",
+        "rev": "OK3P6hFsqBQeLc1TOP1Mfb"
+      }
+    },
+    "_type": "event",
+    "_updatedAt": "2025-08-06T22:27:07Z",
+    "date": "2025-08-09T16:00:00.000Z",
+    "description": "Downtown Sandpoint transforms into an artistic showcase featuring local artist booths, food vendors, and a dedicated youth art area.",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-50d4353e7db7db1ca1b077868c2c079722ac449c-500x375-webp",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:37.413Z",
+    "slug": {
+      "_type": "slug",
+      "current": "poac-annual-arts-and-crafts-fair"
+    },
+    "source": "sandpoint-online",
+    "tags": [
+      "arts",
+      "crafts",
+      "fair",
+      "family",
+      "community"
+    ],
+    "tickets": null,
+    "title": "POAC Annual Arts and Crafts Fair",
+    "url": "https://www.artinsandpoint.org/arts-crafts-fair",
+    "venue": {
+      "_ref": "q4vcwxRNPgidCixn9UeXvR",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-08-06T17:48:22Z",
+    "_id": "ecSttagJdpcXow3QAiwij0",
+    "_rev": "q4vcwxRNPgidCixn9XT4CM",
+    "_system": {
+      "base": {
+        "id": "ecSttagJdpcXow3QAiwij0",
+        "rev": "OK3P6hFsqBQeLc1TOPQTXb"
+      }
+    },
+    "_type": "event",
+    "_updatedAt": "2025-08-06T22:30:04Z",
+    "date": "2025-08-09T23:30:00.000Z",
+    "description": "Annual charity motorcycle ride for Toys for Tots hosted by Sandpoint Lions Club. $25 per rider includes route and $15 BBQ dinner. Beer Garden",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-303075fc415150613537e23cc6379b364ca69836-600x503-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:39.844Z",
+    "slug": {
+      "_type": "slug",
+      "current": "christmas-in-august-poker-run"
+    },
+    "source": "sandpoint-online",
+    "tags": [
+      "charity",
+      "motorcycle",
+      "community",
+      "bbq"
+    ],
+    "tickets": null,
+    "title": "Christmas in August Poker Run",
+    "url": "https://www.facebook.com/SandpointLionsClub/posts/youre-invited-to-christmas-in-august-on-august-9th-2025-were-hosting-a-poker-run/1204706381697178/",
+    "venue": {
+      "_ref": "ecSttagJdpcXow3QAiwiKc",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-08-06T17:48:23Z",
+    "_id": "q4vcwxRNPgidCixn9UegRy",
+    "_rev": "OK3P6hFsqBQeLc1TOPPqcB",
+    "_system": {
+      "base": {
+        "id": "q4vcwxRNPgidCixn9UegRy",
+        "rev": "ecSttagJdpcXow3QAjYhPe"
+      }
+    },
+    "_type": "event",
+    "_updatedAt": "2025-08-06T22:21:47Z",
+    "date": "2025-08-17T03:00:00.000Z",
+    "description": "Movies on the Mountain are free outdoor events taking place every Friday night in August. Join us on the lawn outside the Crow's Bench each Friday at twilight(around 8:00pm-8:45pm) for movies, laughter, and fun!",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-db33ac8705ef24914447a2ef1767d508f621c05f-960x503-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:41:47.907Z",
+    "slug": {
+      "_type": "slug",
+      "current": "movies-on-the-mountain-aug-16"
+    },
+    "source": "sandpoint-online",
+    "tags": [
+      "movies",
+      "outdoor",
+      "family",
+      "free"
+    ],
+    "tickets": null,
+    "title": "Movies on the Mountain",
+    "url": "https://www.cityofsandpoint.com/events/[object Object]",
+    "venue": {
+      "_ref": "ecSttagJdpcXow3QAiwiGY",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-08-06T17:48:26Z",
+    "_id": "ecSttagJdpcXow3QAiwivC",
+    "_rev": "OK3P6hFsqBQeLc1TOPKpQI",
+    "_system": {
+      "base": {
+        "id": "ecSttagJdpcXow3QAiwivC",
+        "rev": "q4vcwxRNPgidCixn9XCyik"
+      }
+    },
+    "_type": "event",
+    "_updatedAt": "2025-08-06T22:03:40Z",
+    "date": "2025-08-29T10:00:00.000Z",
+    "description": "Free self-guided tour of local artists studios featuring various art mediums throughout the Sandpoint area.",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-ad1cf99f1c806dfd95d7985215eb29fc463c0b60-500x281-webp",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:42:08.683Z",
+    "slug": {
+      "_type": "slug",
+      "current": "artists-studio-tour"
+    },
+    "source": "sandpoint-online",
+    "tags": [
+      "art",
+      "tour",
+      "free",
+      "self-guided"
+    ],
+    "tickets": null,
+    "title": "Artists Studio Tour",
+    "url": "https://www.artinsandpoint.org/artist-studio-tour",
+    "venue": {
+      "_ref": "q4vcwxRNPgidCixn9UeYGn",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-08-06T17:48:25Z",
+    "_id": "q4vcwxRNPgidCixn9UegnK",
+    "_rev": "OK3P6hFsqBQeLc1TOPOf40",
+    "_system": {
+      "base": {
+        "id": "q4vcwxRNPgidCixn9UegnK",
+        "rev": "OK3P6hFsqBQeLc1TOP1VkY"
+      }
+    },
+    "_type": "event",
+    "_updatedAt": "2025-08-06T22:04:55Z",
+    "date": "2025-08-29T12:00:00.000Z",
+    "description": "Multi-day celebration at Schweitzer featuring beer tasting and live music. Beer tent located near Great Escape Quad.",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-029efa4a8f83e93073efd90b3a8a51b0991bb876-1024x576-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:42:06.135Z",
+    "slug": {
+      "_type": "slug",
+      "current": "fall-fest-schweitzer"
+    },
+    "source": "sandpoint-online",
+    "tags": [
+      "festival",
+      "beer",
+      "music",
+      "adult"
+    ],
+    "tickets": "https://www.schweitzer.com/things-to-do/events/fall-fest",
+    "title": "Fall Fest",
+    "url": "https://www.schweitzer.com/things-to-do/events/fall-fest",
+    "venue": {
+      "_ref": "ecSttagJdpcXow3QAiwiGY",
+      "_type": "reference"
+    }
+  },
+  {
+    "_createdAt": "2025-08-06T17:48:27Z",
+    "_id": "ecSttagJdpcXow3QAiwizG",
+    "_rev": "OK3P6hFsqBQeLc1TOP9XZv",
+    "_system": {
+      "base": {
+        "id": "ecSttagJdpcXow3QAiwizG",
+        "rev": "ecSttagJdpcXow3QAjYn4Y"
+      }
+    },
+    "_type": "event",
+    "_updatedAt": "2025-08-06T22:01:14Z",
+    "date": "2025-09-04T19:00:00.000Z",
+    "description": "Four-day blues music festival in nearby Priest River featuring local Northwest Blues bands. 35 entry, children 12 and under free. Cash only. Pets not encouraged. Food available for purchase at the gazebo. No cell service. \n\nLine up... Saturday the 6th 12-9:30ish\nThe Meat Sweatz 12:00-2:00pm\nJustyn Priest 2:30-4:30pm\nSammy Eubanks 5:00-7:00pm\nThe Bobby Paterson Band 7:30-9:30pm\n\n1542 Prater Mountain Rd, Priest River, ID 83856, United States\n",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-fc5f7c5dbd6846cbb9877e29ba7c2e86f80991f4-773x768-jpg",
+        "_type": "reference"
+      }
+    },
+    "scrapedAt": "2025-08-06T21:42:11.134Z",
+    "slug": {
+      "_type": "slug",
+      "current": "bluesfest-priest-river"
+    },
+    "source": "sandpoint-online",
+    "tags": [
+      "blues",
+      "music",
+      "festival",
+      "multi-day"
+    ],
+    "tickets": null,
+    "title": "Bluesfest",
+    "url": "https://www.facebook.com/events/1332063514561118/?acontext=%7B%22event_action_history%22%3A[%7B%22surface%22%3A%22external_search_engine%22%7D%2C%7B%22mechanism%22%3A%22surface%22%2C%22surface%22%3A%22groups_highlight_units%22%7D]%2C%22ref_notif_type%22%3Anull%7D",
+    "venue": {
+      "_ref": "ecSttagJdpcXow3QAiwiOg",
+      "_type": "reference"
+    }
+  }
+]

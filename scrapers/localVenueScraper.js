@@ -169,7 +169,7 @@ class LocalVenueScraper extends EventScraper {
       venue: venue.name
     };
 
-    // Title
+    // Title and URL extraction
     const titleEl = $element.find(venue.selectors.title).first();
     if (titleEl.length) {
       eventData.title = titleEl.text().trim();
@@ -178,10 +178,68 @@ class LocalVenueScraper extends EventScraper {
       const linkEl = titleEl.is('a') ? titleEl : titleEl.find('a').first();
       if (linkEl.length) {
         let href = linkEl.attr('href');
-        if (href && !href.startsWith('http')) {
+        if (href && !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
           href = new URL(href, venue.url).toString();
         }
-        eventData.url = href;
+        if (href && href.startsWith('http')) {
+          eventData.url = href;
+        }
+      }
+    }
+    
+    // Look for additional event detail links
+    if (!eventData.url) {
+      const linkSelectors = [
+        'a[href*="event"]',
+        'a[href*="show"]',
+        'a[href*="details"]',
+        '.event-link a',
+        '.more-info a',
+        'a'
+      ];
+      
+      for (const selector of linkSelectors) {
+        const linkEl = $element.find(selector).first();
+        if (linkEl.length) {
+          let href = linkEl.attr('href');
+          if (href && !href.startsWith('http') && !href.startsWith('mailto:') && !href.startsWith('tel:')) {
+            href = new URL(href, venue.url).toString();
+          }
+          if (href && href.startsWith('http')) {
+            eventData.url = href;
+            break;
+          }
+        }
+      }
+    }
+    
+    // Look specifically for ticket/registration links
+    const ticketSelectors = [
+      'a[href*="ticket"]',
+      'a[href*="buy"]',
+      'a[href*="register"]',
+      'a[href*="eventbrite"]',
+      'a[href*="purchase"]',
+      'a:contains("Tickets")',
+      'a:contains("Buy Tickets")',
+      'a:contains("Register")',
+      'a:contains("Purchase")',
+      '.ticket-link a',
+      '.buy-tickets a',
+      '.registration a'
+    ];
+    
+    for (const selector of ticketSelectors) {
+      const ticketEl = $element.find(selector).first();
+      if (ticketEl.length) {
+        let ticketUrl = ticketEl.attr('href');
+        if (ticketUrl && !ticketUrl.startsWith('http') && !ticketUrl.startsWith('mailto:')) {
+          ticketUrl = new URL(ticketUrl, venue.url).toString();
+        }
+        if (ticketUrl && ticketUrl.startsWith('http')) {
+          eventData.ticketUrl = ticketUrl;
+          break;
+        }
       }
     }
 
@@ -199,14 +257,76 @@ class LocalVenueScraper extends EventScraper {
       eventData.description = descEl.text().trim();
     }
 
-    // Image
-    const imgEl = $element.find('img').first();
-    if (imgEl.length) {
-      let imgSrc = imgEl.attr('src') || imgEl.attr('data-src');
-      if (imgSrc && !imgSrc.startsWith('http')) {
-        imgSrc = new URL(imgSrc, venue.url).toString();
+    // Image - prioritize high-quality event images
+    const imageSelectors = [
+      '.event-image img',
+      '.event-photo img',
+      '.poster img',
+      '.featured-image img',
+      'img[alt*="event"]',
+      'img[alt*="show"]',
+      'img[alt*="concert"]',
+      'img[src*="event"]',
+      'img[src*="show"]',
+      '.thumbnail img',
+      'img'
+    ];
+    
+    for (const selector of imageSelectors) {
+      const imgEl = $element.find(selector).first();
+      if (imgEl.length) {
+        let imgSrc = imgEl.attr('src') || imgEl.attr('data-src') || imgEl.attr('data-lazy-src');
+        
+        if (imgSrc) {
+          // Skip very small images, logos, or generic placeholders
+          const width = imgEl.attr('width') || imgEl.css('width');
+          const height = imgEl.attr('height') || imgEl.css('height');
+          const alt = imgEl.attr('alt') || '';
+          
+          // Skip if dimensions are too small (likely icons or logos)
+          if ((width && parseInt(width) < 80) || (height && parseInt(height) < 80)) {
+            continue;
+          }
+          
+          // Skip common logo/icon filenames and alt text
+          const filename = imgSrc.toLowerCase();
+          const altText = alt.toLowerCase();
+          if (filename.includes('logo') || filename.includes('icon') || 
+              filename.includes('avatar') || altText.includes('logo') ||
+              altText.includes('icon') || filename.includes('thumb_')) {
+            continue;
+          }
+          
+          // Convert relative URLs to absolute
+          if (!imgSrc.startsWith('http')) {
+            if (imgSrc.startsWith('//')) {
+              imgSrc = 'https:' + imgSrc;
+            } else {
+              imgSrc = new URL(imgSrc, venue.url).toString();
+            }
+          }
+          
+          eventData.image = imgSrc;
+          break;
+        }
       }
-      eventData.image = imgSrc;
+    }
+    
+    // Check for CSS background images if no img tag found
+    if (!eventData.image) {
+      const bgElements = $element.find('[style*="background-image"], .hero-image, .event-banner');
+      bgElements.each((i, el) => {
+        const style = $(el).attr('style') || '';
+        const bgMatch = style.match(/background-image:\s*url\(['"]?([^'"]+)['"]?\)/);
+        if (bgMatch && bgMatch[1]) {
+          let bgImg = bgMatch[1];
+          if (!bgImg.startsWith('http')) {
+            bgImg = new URL(bgImg, venue.url).toString();
+          }
+          eventData.image = bgImg;
+          return false; // Break out of each loop
+        }
+      });
     }
 
     // Price

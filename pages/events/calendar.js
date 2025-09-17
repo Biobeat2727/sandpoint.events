@@ -69,7 +69,7 @@ export default function CalendarPage({ events }) {
 }
 
 export async function getStaticProps() {
-  const query = `*[_type == "event"]{
+  const query = `*[_type == "event" && published == true]{
     _id,
     title,
     "slug": slug.current,

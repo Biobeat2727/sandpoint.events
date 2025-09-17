@@ -1,70 +1,256 @@
-/* styles/globals.css (for Tailwind CSS v3) */
+/* Enhanced globals.css - Restored critical styling */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Your other global styles below */
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --brand-primary: #22c55e;
+    --brand-primary-hover: #16a34a;
   }
-}
 
-html, body {
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  margin: 0;
-  padding: 0;
-  touch-action: pan-y;
-  -webkit-overflow-scrolling: touch;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  max-width: 100vw; /* Ensure the body doesn't exceed the viewport width */
-}
-
-/* Make sure images are fully responsive */
-img {
-  max-width: 100%; /* Prevent overflow */
-  height: auto; /* Maintain aspect ratio */
-}
-
-/* Ensure containers and elements don't overflow */
-.container, .content {
-  max-width: 100%; /* Prevent any container from overflowing */
-}
-
-/* Ensure Flex and Grid containers are responsive */
-.flex-container, .grid-container {
-  max-width: 100%; /* Prevent overflow */
-  width: 100%; /* Ensure full width on smaller screens */
-}
-
-/* Mobile-first adjustments: Allow flexibility on small screens */
-@media (max-width: 768px) {
-  .card {
-    width: 100%; /* Ensure cards take full width on mobile */
+  html {
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    scroll-behavior: smooth;
   }
-}
 
-/* Dark mode styles */
-@media (prefers-color-scheme: dark) {
   body {
-    background: var(--background);
-    color: var(--foreground);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    color: #334155;
+    background-color: #fafafa;
+  }
+
+  /* Ensure proper spacing for fixed navbar */
+  main {
+    padding-top: 5rem; /* 80px to account for fixed navbar */
   }
 }
 
-.highlight-event {
-  background-color: #34d399; /* Tailwind emerald-400 */
-  border-radius: 50%;
-  width: 0.5rem;
-  height: 0.5rem;
-  margin: 0 auto;
-  margin-top: 2px;
+@layer components {
+  /* Button System */
+  .btn {
+    @apply inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn px-6 py-3 bg-brand-600 text-white hover:bg-brand-700 focus:ring-brand-500 shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply btn px-6 py-3 bg-white text-brand-700 border border-brand-300 hover:bg-brand-50 focus:ring-brand-500 shadow-sm;
+  }
+
+  .btn-outline {
+    @apply btn px-4 py-2 bg-transparent text-brand-700 border border-brand-300 hover:bg-brand-50 focus:ring-brand-500;
+  }
+
+  /* Card System */
+  .card {
+    @apply bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-soft;
+  }
+
+  .card-interactive {
+    @apply card hover:shadow-medium hover:border-neutral-300 transition-all duration-300;
+  }
+
+  .card-header {
+    @apply px-6 py-4 border-b border-neutral-200 bg-neutral-50/50;
+  }
+
+  .card-body {
+    @apply px-6 py-4;
+  }
+
+  /* Container System */
+  .container-responsive {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Hero Sections */
+  .hero-section {
+    @apply relative bg-gradient-to-br from-brand-600 via-brand-700 to-brand-800 text-white overflow-hidden;
+  }
+
+  .hero-content {
+    @apply relative z-10 py-20 lg:py-32;
+  }
+
+  .hero-background {
+    @apply absolute inset-0 bg-gradient-to-br from-brand-600/90 to-brand-800/90;
+  }
+
+  /* Content Styling */
+  .content-section {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-header {
+    @apply text-center mb-12 lg:mb-16;
+  }
+
+  .section-title {
+    @apply text-3xl lg:text-4xl font-bold text-neutral-900 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-neutral-600 max-w-2xl mx-auto;
+  }
+
+  /* Grid Layouts */
+  .grid-responsive {
+    @apply grid gap-6 sm:gap-8;
+  }
+
+  .grid-1-2-3 {
+    @apply grid-responsive grid-cols-1 md:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-1-2 {
+    @apply grid-responsive grid-cols-1 lg:grid-cols-2;
+  }
+
+  /* Tag System */
+  .tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-brand-100 text-brand-800;
+  }
+
+  .tag-interactive {
+    @apply tag hover:bg-brand-200 transition-colors cursor-pointer;
+  }
+
+  /* Typography System */
+  .text-display {
+    @apply text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight;
+  }
+
+  .text-heading {
+    @apply text-2xl lg:text-3xl font-bold text-neutral-900;
+  }
+
+  .text-subheading {
+    @apply text-xl font-semibold text-neutral-800;
+  }
+
+  .text-body {
+    @apply text-neutral-700 leading-relaxed;
+  }
+
+  .text-muted {
+    @apply text-neutral-500;
+  }
+
+  /* Interactive Elements */
+  .link-primary {
+    @apply text-brand-600 hover:text-brand-700 font-medium transition-colors;
+  }
+
+  .link-underline {
+    @apply link-primary underline underline-offset-2 hover:no-underline;
+  }
 }
 
+@layer utilities {
+  /* Animation Utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+  }
+
+  /* Stagger animations for lists */
+  .animate-stagger-1 {
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+  }
+
+  .animate-stagger-2 {
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+  }
+
+  .animate-stagger-3 {
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+  }
+
+  /* Backdrop blur utilities */
+  .backdrop-blur-navbar {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* Focus utilities */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+  }
+
+  /* Shadow utilities beyond Tailwind defaults */
+  .shadow-soft {
+    box-shadow: 0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04);
+  }
+
+  .shadow-medium {
+    box-shadow: 0 4px 25px -3px rgba(0, 0, 0, 0.1), 0 6px 16px -4px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-strong {
+    box-shadow: 0 10px 40px -3px rgba(0, 0, 0, 0.1), 0 12px 32px -4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

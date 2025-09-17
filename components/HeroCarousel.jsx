@@ -33,7 +33,7 @@ export default function HeroCarousel({ events }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen overflow-hidden pt-20">
       <Carousel
         autoPlay
         infiniteLoop
@@ -53,7 +53,7 @@ export default function HeroCarousel({ events }) {
           return (
             <div
               key={event._id}
-              className="w-full min-h-screen flex items-center justify-center relative overflow-hidden bg-transparent"
+              className="w-full min-h-[calc(100vh-5rem)] flex items-center justify-center relative overflow-hidden bg-transparent"
             >
               {/* Background image blur */}
               <div

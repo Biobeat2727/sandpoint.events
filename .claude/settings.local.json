@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:festivalatsandpoint.com)",
+      "WebFetch(domain:www.schweitzer.com)",
+      "Bash(node:*)",
+      "WebFetch(domain:www.eventbrite.com)"
+    ],
+    "deny": []
+  }
+}
